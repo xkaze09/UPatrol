@@ -31,21 +31,12 @@ jobs:
       - name: Get dependencies
         run: flutter pub get
 
-      # Runs a set of commands using the runners shell
-      - name: Start release build
+      - name: Build apk
         run: flutter build apk
 
-      - name: Upload the artifacts
-        uses: actions/upload-artifact@27121b0bdffd731efa15d66772be8dc71245d074
+      # Runs a set of commands using the runners shell
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
         with:
-          name: ${{ matrix.file }}-mapping.txt
-          path: ${{ matrix.file }}-mapping.txt
-      - name: Upload the release assets
-        uses: actions/upload-release-asset@e8f9f06c4b078e705bd2ea027f0926603fc9b4d5
-        with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: ${{ matrix.file }}-mapping.txt
-          asset_name: ${{ matrix.file }}-mapping.txt
-          asset_content_type: text/plain
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          name: apk
+          path: build/app/outputs/bundle/release
