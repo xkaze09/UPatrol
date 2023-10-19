@@ -17,6 +17,7 @@ jobs:
         with:
           channel: 'beta'
       - run: flutter pub get
+      - run: flutter pub add intl:^0.18.1
       - run: flutter format --set-exit-if-changed .
       - run: flutter analyze .
       - run: flutter build apk
