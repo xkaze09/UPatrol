@@ -3,8 +3,6 @@ name: Flutterflow Android Builds
 on:
   push:
     branches: [ "main" ]
-    tags:
-      - '*'
   pull_request:
     branches: [ "main" ]
 
@@ -16,22 +14,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      
-      - name: version
-        run: echo "::set-output name=version::$(./bin/azblogfilter --version)"
-        id: version
-        
-      - name: release
-        uses: actions/create-release@v1
-        id: create_release
-        with:
-          draft: false
-          prerelease: true
-          release_name: ${{ steps.version.outputs.version }}
-          tag_name: ${{ github.ref }}
-          body_path: CHANGELOG.md
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
       - uses: actions/setup-java@v3
         with:
           distribution: 'zulu'
@@ -57,21 +39,13 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Upload artifact aab
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
+        uses: actions/upload-artifact@v2
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: build/app/outputs/bundle/release
-          asset_name: appbundle.zip
-          asset_content_type: application/zip
+          name: appbundle
+          path: build/app/outputs/bundle/release/app-release.aab
           
       - name: Upload artifact apk
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
+        uses: actions/upload-artifact@v2
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: build/app/outputs/apk/release
-          asset_name: apk.zip
-          asset_content_type: application/zip
+          name: apk
+          path: build/app/outputs/apk/release
