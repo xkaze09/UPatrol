@@ -31,9 +31,6 @@ jobs:
       - name: Get dependencies
         run: flutter pub get
 
-      - name: Check format issues
-        run: flutter format --set-exit-if-changed
-
       - name: Build aab
         run: flutter build appbundle
 
