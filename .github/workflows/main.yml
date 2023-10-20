@@ -31,12 +31,24 @@ jobs:
       - name: Get dependencies
         run: flutter pub get
 
-      - name: Build apk
+      - name: Check format issues
+        run: flutter format --set-exit-if-changed
+
+      - name: Build aab
         run: flutter build appbundle
 
+      - name: Build aab
+        run: flutter build apk --split-per-abi
+
       # Runs a set of commands using the runners shell
-      - name: Upload artifact
+      - name: Upload artifact aab
         uses: actions/upload-artifact@v2
         with:
           name: appbundle
-          path: build/app/outputs/bundle/release
+          path: build/app/outputs/bundle/release/app-release.aab
+          
+      - name: Upload artifact apk
+        uses: actions/upload-artifact@v2
+        with:
+          name: apk
+          path: build/app/outputs/apk/release/app-release.apk
