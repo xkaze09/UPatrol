@@ -8,8 +8,8 @@ import '/backend/schema/util/schema_util.dart';
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
-class UsersRecord extends FirestoreRecord {
-  UsersRecord._(
+class ModeratorsRecord extends FirestoreRecord {
+  ModeratorsRecord._(
     DocumentReference reference,
     Map<String, dynamic> data,
   ) : super(reference, data) {
@@ -68,39 +68,40 @@ class UsersRecord extends FirestoreRecord {
   }
 
   static CollectionReference get collection =>
-      FirebaseFirestore.instance.collection('users');
+      FirebaseFirestore.instance.collection('moderators');
 
-  static Stream<UsersRecord> getDocument(DocumentReference ref) =>
-      ref.snapshots().map((s) => UsersRecord.fromSnapshot(s));
+  static Stream<ModeratorsRecord> getDocument(DocumentReference ref) =>
+      ref.snapshots().map((s) => ModeratorsRecord.fromSnapshot(s));
 
-  static Future<UsersRecord> getDocumentOnce(DocumentReference ref) =>
-      ref.get().then((s) => UsersRecord.fromSnapshot(s));
+  static Future<ModeratorsRecord> getDocumentOnce(DocumentReference ref) =>
+      ref.get().then((s) => ModeratorsRecord.fromSnapshot(s));
 
-  static UsersRecord fromSnapshot(DocumentSnapshot snapshot) => UsersRecord._(
+  static ModeratorsRecord fromSnapshot(DocumentSnapshot snapshot) =>
+      ModeratorsRecord._(
         snapshot.reference,
         mapFromFirestore(snapshot.data() as Map<String, dynamic>),
       );
 
-  static UsersRecord getDocumentFromData(
+  static ModeratorsRecord getDocumentFromData(
     Map<String, dynamic> data,
     DocumentReference reference,
   ) =>
-      UsersRecord._(reference, mapFromFirestore(data));
+      ModeratorsRecord._(reference, mapFromFirestore(data));
 
   @override
   String toString() =>
-      'UsersRecord(reference: ${reference.path}, data: $snapshotData)';
+      'ModeratorsRecord(reference: ${reference.path}, data: $snapshotData)';
 
   @override
   int get hashCode => reference.path.hashCode;
 
   @override
   bool operator ==(other) =>
-      other is UsersRecord &&
+      other is ModeratorsRecord &&
       reference.path.hashCode == other.reference.path.hashCode;
 }
 
-Map<String, dynamic> createUsersRecordData({
+Map<String, dynamic> createModeratorsRecordData({
   String? email,
   String? displayName,
   String? photoUrl,
@@ -126,11 +127,11 @@ Map<String, dynamic> createUsersRecordData({
   return firestoreData;
 }
 
-class UsersRecordDocumentEquality implements Equality<UsersRecord> {
-  const UsersRecordDocumentEquality();
+class ModeratorsRecordDocumentEquality implements Equality<ModeratorsRecord> {
+  const ModeratorsRecordDocumentEquality();
 
   @override
-  bool equals(UsersRecord? e1, UsersRecord? e2) {
+  bool equals(ModeratorsRecord? e1, ModeratorsRecord? e2) {
     return e1?.email == e2?.email &&
         e1?.displayName == e2?.displayName &&
         e1?.photoUrl == e2?.photoUrl &&
@@ -142,7 +143,7 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
   }
 
   @override
-  int hash(UsersRecord? e) => const ListEquality().hash([
+  int hash(ModeratorsRecord? e) => const ListEquality().hash([
         e?.email,
         e?.displayName,
         e?.photoUrl,
@@ -154,5 +155,5 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
       ]);
 
   @override
-  bool isValidKey(Object? o) => o is UsersRecord;
+  bool isValidKey(Object? o) => o is ModeratorsRecord;
 }

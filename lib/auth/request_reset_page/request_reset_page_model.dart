@@ -5,6 +5,8 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'request_reset_page_widget.dart' show RequestResetPageWidget;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -13,9 +15,11 @@ class RequestResetPageModel extends FlutterFlowModel<RequestResetPageWidget> {
 
   final unfocusNode = FocusNode();
   // State field(s) for emailAddress_Login widget.
+  FocusNode? emailAddressLoginFocusNode;
   TextEditingController? emailAddressLoginController;
   String? Function(BuildContext, String?)? emailAddressLoginControllerValidator;
   // State field(s) for forgetEmailAddress widget.
+  FocusNode? forgetEmailAddressFocusNode;
   TextEditingController? forgetEmailAddressController;
   String? Function(BuildContext, String?)?
       forgetEmailAddressControllerValidator;
@@ -26,7 +30,10 @@ class RequestResetPageModel extends FlutterFlowModel<RequestResetPageWidget> {
 
   void dispose() {
     unfocusNode.dispose();
+    emailAddressLoginFocusNode?.dispose();
     emailAddressLoginController?.dispose();
+
+    forgetEmailAddressFocusNode?.dispose();
     forgetEmailAddressController?.dispose();
   }
 

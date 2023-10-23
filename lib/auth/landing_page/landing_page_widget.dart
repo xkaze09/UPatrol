@@ -2,6 +2,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'landing_page_model.dart';
@@ -34,6 +36,15 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
 
   @override
   Widget build(BuildContext context) {
+    if (isiOS) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarBrightness: Theme.of(context).brightness,
+          systemStatusBarContrastEnforced: true,
+        ),
+      );
+    }
+
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -66,9 +77,10 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
                         borderRadius: BorderRadius.circular(8.0),
                         child: Image.asset(
                           'assets/images/UPatrol-logo.png',
-                          width: 300.0,
+                          width: double.infinity,
                           height: 168.0,
                           fit: BoxFit.contain,
+                          alignment: Alignment(-0.30, 0.00),
                         ),
                       ),
                     ),
@@ -81,7 +93,7 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
               ],
             ),
             Align(
-              alignment: AlignmentDirectional(0.08, 0.22),
+              alignment: AlignmentDirectional(0.01, 0.22),
               child: Text(
                 'Welcome to \nUPatrol!',
                 textAlign: TextAlign.center,
@@ -93,10 +105,10 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
               ),
             ),
             Align(
-              alignment: AlignmentDirectional(0.20, 0.53),
+              alignment: AlignmentDirectional(0.03, 0.52),
               child: FFButtonWidget(
-                onPressed: () {
-                  print('Button pressed ...');
+                onPressed: () async {
+                  context.pushNamed('createReport');
                 },
                 text: 'Quick Report',
                 options: FFButtonOptions(
@@ -122,10 +134,19 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
               ),
             ),
             Align(
-              alignment: AlignmentDirectional(0.15, 0.72),
+              alignment: AlignmentDirectional(0.04, 0.72),
               child: FFButtonWidget(
-                onPressed: () {
-                  print('Button pressed ...');
+                key: ValueKey('Button_8t21'),
+                onPressed: () async {
+                  context.pushNamed(
+                    'authenticationPage',
+                    extra: <String, dynamic>{
+                      kTransitionInfoKey: TransitionInfo(
+                        hasTransition: true,
+                        transitionType: PageTransitionType.bottomToTop,
+                      ),
+                    },
+                  );
                 },
                 text: 'Get Started',
                 options: FFButtonOptions(

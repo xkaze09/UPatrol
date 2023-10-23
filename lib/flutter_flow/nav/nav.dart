@@ -1,12 +1,13 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
 
-import '../../auth/base_auth_user_provider.dart';
+import '/auth/base_auth_user_provider.dart';
 
 import '/index.dart';
 import '/main.dart';
@@ -78,25 +79,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? LaunchPageWidget() : LandingPageWidget(),
+      errorBuilder: (context, state) => appStateNotifier.loggedIn
+          ? ConnectingPageWidget()
+          : LandingPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
-              ? LaunchPageWidget()
+              ? ConnectingPageWidget()
               : LandingPageWidget(),
-        ),
-        FFRoute(
-          name: 'Home',
-          path: '/home',
-          builder: (context, params) => HomeWidget(),
-        ),
-        FFRoute(
-          name: 'HomePage_User',
-          path: '/homePageUser',
-          builder: (context, params) => HomePageUserWidget(),
         ),
         FFRoute(
           name: 'authenticationPage',
@@ -114,9 +106,64 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => RequestResetPageWidget(),
         ),
         FFRoute(
+          name: 'createReport',
+          path: '/createReport',
+          builder: (context, params) => CreateReportWidget(),
+        ),
+        FFRoute(
+          name: 'HomePage-M',
+          path: '/homePageM',
+          builder: (context, params) => HomePageMWidget(),
+        ),
+        FFRoute(
+          name: 'HomePage-R',
+          path: '/homePageR',
+          builder: (context, params) => HomePageRWidget(),
+        ),
+        FFRoute(
+          name: 'homepageAnon',
+          path: '/homepageAnon',
+          builder: (context, params) => HomepageAnonWidget(),
+        ),
+        FFRoute(
           name: 'launchPage',
           path: '/launchPage',
           builder: (context, params) => LaunchPageWidget(),
+        ),
+        FFRoute(
+          name: 'createReport-U',
+          path: '/createReportU',
+          builder: (context, params) => CreateReportUWidget(),
+        ),
+        FFRoute(
+          name: 'HomePage-U',
+          path: '/homePageU',
+          builder: (context, params) => HomePageUWidget(),
+        ),
+        FFRoute(
+          name: 'connectingPage',
+          path: '/connectingPage',
+          builder: (context, params) => ConnectingPageWidget(),
+        ),
+        FFRoute(
+          name: 'logoutPage',
+          path: '/logoutPage',
+          builder: (context, params) => LogoutPageWidget(),
+        ),
+        FFRoute(
+          name: 'logoutPage',
+          path: '/logoutPage',
+          builder: (context, params) => LogoutPageWidget(),
+        ),
+        FFRoute(
+          name: 'logoutPage',
+          path: '/logoutPage',
+          builder: (context, params) => LogoutPageWidget(),
+        ),
+        FFRoute(
+          name: 'logoutPage',
+          path: '/logoutPage',
+          builder: (context, params) => LogoutPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -300,10 +347,9 @@ class FFRoute {
                   child: SizedBox(
                     width: 50.0,
                     height: 50.0,
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                        FlutterFlowTheme.of(context).primary,
-                      ),
+                    child: SpinKitThreeBounce(
+                      color: Color(0xFFB12FF6),
+                      size: 50.0,
                     ),
                   ),
                 )

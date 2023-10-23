@@ -1,30 +1,45 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'launch_page_model.dart';
-export 'launch_page_model.dart';
+import 'connecting_page_model.dart';
+export 'connecting_page_model.dart';
 
-class LaunchPageWidget extends StatefulWidget {
-  const LaunchPageWidget({Key? key}) : super(key: key);
+class ConnectingPageWidget extends StatefulWidget {
+  const ConnectingPageWidget({Key? key}) : super(key: key);
 
   @override
-  _LaunchPageWidgetState createState() => _LaunchPageWidgetState();
+  _ConnectingPageWidgetState createState() => _ConnectingPageWidgetState();
 }
 
-class _LaunchPageWidgetState extends State<LaunchPageWidget> {
-  late LaunchPageModel _model;
+class _ConnectingPageWidgetState extends State<ConnectingPageWidget> {
+  late ConnectingPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => LaunchPageModel());
+    _model = createModel(context, () => ConnectingPageModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      if (valueOrDefault<bool>(currentUserDocument?.isModerator, false)) {
+        context.pushNamed('HomePage-M');
+      } else {
+        if (valueOrDefault<bool>(currentUserDocument?.isReceiver, false)) {
+          context.pushNamed('HomePage-R');
+        } else {
+          context.pushNamed('HomePage-U');
+        }
+      }
+    });
   }
 
   @override
@@ -93,73 +108,15 @@ class _LaunchPageWidgetState extends State<LaunchPageWidget> {
               ],
             ),
             Align(
-              alignment: AlignmentDirectional(0.01, 0.22),
+              alignment: AlignmentDirectional(0.00, 0.40),
               child: Text(
-                'Welcome to \nUPatrol!',
+                'Connecting...',
                 textAlign: TextAlign.center,
                 style: FlutterFlowTheme.of(context).headlineLarge.override(
                       fontFamily: 'Outfit',
                       color: Color(0xFF5B3491),
                       fontSize: 35.0,
                     ),
-              ),
-            ),
-            Align(
-              alignment: AlignmentDirectional(0.03, 0.52),
-              child: FFButtonWidget(
-                onPressed: () {
-                  print('Button pressed ...');
-                },
-                text: 'Quick Report',
-                options: FFButtonOptions(
-                  width: 300.0,
-                  height: 55.0,
-                  padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                  iconPadding:
-                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                  color: Color(0xFFBE6F5E),
-                  textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                        fontFamily: 'Readex Pro',
-                        color: Colors.white,
-                        fontSize: 25.0,
-                        fontWeight: FontWeight.w500,
-                      ),
-                  elevation: 3.0,
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
-                    width: 1.0,
-                  ),
-                  borderRadius: BorderRadius.circular(30.0),
-                ),
-              ),
-            ),
-            Align(
-              alignment: AlignmentDirectional(0.04, 0.72),
-              child: FFButtonWidget(
-                onPressed: () {
-                  print('Button pressed ...');
-                },
-                text: 'Get Started',
-                options: FFButtonOptions(
-                  width: 300.0,
-                  height: 55.0,
-                  padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                  iconPadding:
-                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                  color: Color(0xFF5B3491),
-                  textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                        fontFamily: 'Readex Pro',
-                        color: Colors.white,
-                        fontSize: 25.0,
-                        fontWeight: FontWeight.w500,
-                      ),
-                  elevation: 3.0,
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
-                    width: 1.0,
-                  ),
-                  borderRadius: BorderRadius.circular(30.0),
-                ),
               ),
             ),
           ],

@@ -4,6 +4,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'request_reset_page_model.dart';
@@ -27,7 +29,9 @@ class _RequestResetPageWidgetState extends State<RequestResetPageWidget> {
     _model = createModel(context, () => RequestResetPageModel());
 
     _model.emailAddressLoginController ??= TextEditingController();
+    _model.emailAddressLoginFocusNode ??= FocusNode();
     _model.forgetEmailAddressController ??= TextEditingController();
+    _model.forgetEmailAddressFocusNode ??= FocusNode();
   }
 
   @override
@@ -39,6 +43,15 @@ class _RequestResetPageWidgetState extends State<RequestResetPageWidget> {
 
   @override
   Widget build(BuildContext context) {
+    if (isiOS) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarBrightness: Theme.of(context).brightness,
+          systemStatusBarContrastEnforced: true,
+        ),
+      );
+    }
+
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -83,6 +96,8 @@ class _RequestResetPageWidgetState extends State<RequestResetPageWidget> {
                                                     child: TextFormField(
                                                       controller: _model
                                                           .emailAddressLoginController,
+                                                      focusNode: _model
+                                                          .emailAddressLoginFocusNode,
                                                       obscureText: false,
                                                       decoration:
                                                           InputDecoration(
@@ -213,9 +228,11 @@ class _RequestResetPageWidgetState extends State<RequestResetPageWidget> {
                                                             8.0),
                                                     child: Image.asset(
                                                       'assets/images/UPatrol-logo.png',
-                                                      width: 400.0,
+                                                      width: double.infinity,
                                                       height: 295.0,
                                                       fit: BoxFit.contain,
+                                                      alignment: Alignment(
+                                                          -0.30, 0.00),
                                                     ),
                                                   ),
                                                 ),
@@ -248,55 +265,69 @@ class _RequestResetPageWidgetState extends State<RequestResetPageWidget> {
                 ),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
                       'Password Reset',
-                      style: FlutterFlowTheme.of(context).bodyMedium,
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Readex Pro',
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                            fontSize: 25.0,
+                          ),
                     ),
                     Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
-                      child: TextFormField(
-                        controller: _model.forgetEmailAddressController,
-                        autofocus: true,
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          labelText: 'Email Address',
-                          labelStyle: FlutterFlowTheme.of(context).labelMedium,
-                          hintText: 'Enter your email address...',
-                          hintStyle: FlutterFlowTheme.of(context).labelMedium,
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).alternate,
-                              width: 2.0,
+                      child: Container(
+                        width: 300.0,
+                        child: TextFormField(
+                          controller: _model.forgetEmailAddressController,
+                          focusNode: _model.forgetEmailAddressFocusNode,
+                          autofocus: true,
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            labelStyle: FlutterFlowTheme.of(context).labelLarge,
+                            hintText: 'Enter your email address...',
+                            hintStyle: FlutterFlowTheme.of(context).labelMedium,
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).alternate,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).primary,
-                              width: 2.0,
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).primary,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          errorBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
-                              width: 2.0,
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          focusedErrorBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).error,
-                              width: 2.0,
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
-                            borderRadius: BorderRadius.circular(8.0),
+                            filled: true,
+                            fillColor:
+                                FlutterFlowTheme.of(context).primaryBackground,
                           ),
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                          validator: _model
+                              .forgetEmailAddressControllerValidator
+                              .asValidator(context),
                         ),
-                        style: FlutterFlowTheme.of(context).bodyMedium,
-                        validator: _model.forgetEmailAddressControllerValidator
-                            .asValidator(context),
                       ),
                     ),
                     FutureBuilder<List<UsersRecord>>(
@@ -314,10 +345,9 @@ class _RequestResetPageWidgetState extends State<RequestResetPageWidget> {
                             child: SizedBox(
                               width: 50.0,
                               height: 50.0,
-                              child: CircularProgressIndicator(
-                                valueColor: AlwaysStoppedAnimation<Color>(
-                                  FlutterFlowTheme.of(context).primary,
-                                ),
+                              child: SpinKitThreeBounce(
+                                color: Color(0xFFB12FF6),
+                                size: 50.0,
                               ),
                             ),
                           );
@@ -352,12 +382,13 @@ class _RequestResetPageWidgetState extends State<RequestResetPageWidget> {
                           },
                           text: 'Reset Password',
                           options: FFButtonOptions(
-                            height: 40.0,
+                            width: 250.0,
+                            height: 30.0,
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 24.0, 0.0, 24.0, 0.0),
                             iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).primary,
+                            color: Color(0xFFBE6F5E),
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
@@ -369,12 +400,14 @@ class _RequestResetPageWidgetState extends State<RequestResetPageWidget> {
                               color: Colors.transparent,
                               width: 1.0,
                             ),
-                            borderRadius: BorderRadius.circular(8.0),
+                            borderRadius: BorderRadius.circular(30.0),
                           ),
                         );
                       },
                     ),
-                  ],
+                  ]
+                      .divide(SizedBox(height: 50.0))
+                      .addToStart(SizedBox(height: 50.0)),
                 ),
               ),
             ),

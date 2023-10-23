@@ -1,11 +1,12 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_button_tabbar.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -31,17 +32,23 @@ class _AuthenticationPageWidgetState extends State<AuthenticationPageWidget>
     super.initState();
     _model = createModel(context, () => AuthenticationPageModel());
 
-    _model.emailAddressLoginController1 ??= TextEditingController();
+    _model.backgroundController ??= TextEditingController();
+    _model.backgroundFocusNode ??= FocusNode();
     _model.tabBarController = TabController(
       vsync: this,
       length: 2,
       initialIndex: 0,
     )..addListener(() => setState(() {}));
-    _model.emailAddressLoginController2 ??= TextEditingController();
+    _model.emailAddressLoginController ??= TextEditingController();
+    _model.emailAddressLoginFocusNode ??= FocusNode();
     _model.passwordLoginController ??= TextEditingController();
+    _model.passwordLoginFocusNode ??= FocusNode();
     _model.emailAddressController ??= TextEditingController();
+    _model.emailAddressFocusNode ??= FocusNode();
     _model.passwordController ??= TextEditingController();
+    _model.passwordFocusNode ??= FocusNode();
     _model.passwordConfirmController ??= TextEditingController();
+    _model.passwordConfirmFocusNode ??= FocusNode();
   }
 
   @override
@@ -53,6 +60,15 @@ class _AuthenticationPageWidgetState extends State<AuthenticationPageWidget>
 
   @override
   Widget build(BuildContext context) {
+    if (isiOS) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarBrightness: Theme.of(context).brightness,
+          systemStatusBarContrastEnforced: true,
+        ),
+      );
+    }
+
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -81,7 +97,7 @@ class _AuthenticationPageWidgetState extends State<AuthenticationPageWidget>
                                             Stack(
                                               children: [
                                                 Container(
-                                                  width: 389.0,
+                                                  width: double.infinity,
                                                   height: 358.0,
                                                   decoration: BoxDecoration(
                                                     color: Color(0xFF9C78B7),
@@ -94,124 +110,130 @@ class _AuthenticationPageWidgetState extends State<AuthenticationPageWidget>
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 20.0,
                                                                 0.0, 0.0),
-                                                    child: TextFormField(
-                                                      controller: _model
-                                                          .emailAddressLoginController1,
-                                                      obscureText: false,
-                                                      decoration:
-                                                          InputDecoration(
-                                                        labelText:
-                                                            'Email Address',
-                                                        labelStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Lexend Deca',
-                                                                  color: Color(
-                                                                      0xFF95A1AC),
-                                                                  fontSize:
-                                                                      14.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .normal,
-                                                                ),
-                                                        hintStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Lexend Deca',
-                                                                  color: Color(
-                                                                      0xFF95A1AC),
-                                                                  fontSize:
-                                                                      14.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .normal,
-                                                                ),
-                                                        enabledBorder:
-                                                            OutlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Color(
-                                                                0x00000000),
-                                                            width: 1.0,
+                                                    child: Container(
+                                                      width: double.infinity,
+                                                      child: TextFormField(
+                                                        controller: _model
+                                                            .backgroundController,
+                                                        focusNode: _model
+                                                            .backgroundFocusNode,
+                                                        obscureText: false,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          labelText:
+                                                              'Email Address',
+                                                          labelStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Lexend Deca',
+                                                                    color: Color(
+                                                                        0xFF95A1AC),
+                                                                    fontSize:
+                                                                        14.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .normal,
+                                                                  ),
+                                                          hintStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Lexend Deca',
+                                                                    color: Color(
+                                                                        0xFF95A1AC),
+                                                                    fontSize:
+                                                                        14.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .normal,
+                                                                  ),
+                                                          enabledBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
                                                           ),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0),
-                                                        ),
-                                                        focusedBorder:
-                                                            OutlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Color(
-                                                                0x00000000),
-                                                            width: 1.0,
+                                                          focusedBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
                                                           ),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0),
-                                                        ),
-                                                        errorBorder:
-                                                            OutlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Color(
-                                                                0x00000000),
-                                                            width: 1.0,
+                                                          errorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
                                                           ),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0),
-                                                        ),
-                                                        focusedErrorBorder:
-                                                            OutlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Color(
-                                                                0x00000000),
-                                                            width: 1.0,
+                                                          focusedErrorBorder:
+                                                              OutlineInputBorder(
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: Color(
+                                                                  0x00000000),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
                                                           ),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0),
+                                                          filled: true,
+                                                          fillColor:
+                                                              Colors.white,
+                                                          contentPadding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      20.0,
+                                                                      24.0,
+                                                                      20.0,
+                                                                      24.0),
                                                         ),
-                                                        filled: true,
-                                                        fillColor: Colors.white,
-                                                        contentPadding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    20.0,
-                                                                    24.0,
-                                                                    20.0,
-                                                                    24.0),
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .titleSmall
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Outfit',
+                                                              color: Color(
+                                                                  0xFF0F1113),
+                                                              fontSize: 16.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .normal,
+                                                            ),
+                                                        maxLines: null,
+                                                        validator: _model
+                                                            .backgroundControllerValidator
+                                                            .asValidator(
+                                                                context),
                                                       ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleSmall
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Outfit',
-                                                                color: Color(
-                                                                    0xFF0F1113),
-                                                                fontSize: 16.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .normal,
-                                                              ),
-                                                      maxLines: null,
-                                                      validator: _model
-                                                          .emailAddressLoginController1Validator
-                                                          .asValidator(context),
                                                     ),
                                                   ),
                                                 ),
@@ -227,9 +249,11 @@ class _AuthenticationPageWidgetState extends State<AuthenticationPageWidget>
                                                             8.0),
                                                     child: Image.asset(
                                                       'assets/images/UPatrol-logo.png',
-                                                      width: 400.0,
+                                                      width: double.infinity,
                                                       height: 295.0,
                                                       fit: BoxFit.contain,
+                                                      alignment: Alignment(
+                                                          -0.30, 0.00),
                                                     ),
                                                   ),
                                                 ),
@@ -264,9 +288,12 @@ class _AuthenticationPageWidgetState extends State<AuthenticationPageWidget>
                   children: [
                     Align(
                       alignment: Alignment(0.0, 0),
-                      child: FlutterFlowButtonTabBar(
-                        useToggleButtonStyle: false,
+                      child: TabBar(
                         isScrollable: true,
+                        labelColor: Colors.white,
+                        unselectedLabelColor: Color(0xFF8F8F8F),
+                        labelPadding: EdgeInsetsDirectional.fromSTEB(
+                            30.0, 0.0, 30.0, 0.0),
                         labelStyle:
                             FlutterFlowTheme.of(context).titleMedium.override(
                                   fontFamily: 'Outfit',
@@ -275,14 +302,12 @@ class _AuthenticationPageWidgetState extends State<AuthenticationPageWidget>
                                   fontWeight: FontWeight.w500,
                                 ),
                         unselectedLabelStyle: TextStyle(),
-                        labelColor: Colors.white,
-                        borderWidth: 0.0,
-                        borderRadius: 0.0,
-                        elevation: 0.0,
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                        indicatorColor: Colors.white,
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            20.0, 20.0, 20.0, 0.0),
                         tabs: [
                           Tab(
+                            key: ValueKey('Tab_hcur'),
                             text: 'Sign In',
                           ),
                           Tab(
@@ -307,8 +332,11 @@ class _AuthenticationPageWidgetState extends State<AuthenticationPageWidget>
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 20.0, 0.0, 0.0),
                                     child: TextFormField(
+                                      key: ValueKey('emailAddress_Login_dfbk'),
                                       controller:
-                                          _model.emailAddressLoginController2,
+                                          _model.emailAddressLoginController,
+                                      focusNode:
+                                          _model.emailAddressLoginFocusNode,
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         labelText: 'Email Address',
@@ -374,8 +402,9 @@ class _AuthenticationPageWidgetState extends State<AuthenticationPageWidget>
                                             fontSize: 16.0,
                                             fontWeight: FontWeight.normal,
                                           ),
+                                      keyboardType: TextInputType.emailAddress,
                                       validator: _model
-                                          .emailAddressLoginController2Validator
+                                          .emailAddressLoginControllerValidator
                                           .asValidator(context),
                                     ),
                                   ),
@@ -383,8 +412,10 @@ class _AuthenticationPageWidgetState extends State<AuthenticationPageWidget>
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 12.0, 0.0, 0.0),
                                     child: TextFormField(
+                                      key: ValueKey('password_Login_4qxs'),
                                       controller:
                                           _model.passwordLoginController,
+                                      focusNode: _model.passwordLoginFocusNode,
                                       obscureText:
                                           !_model.passwordLoginVisibility,
                                       decoration: InputDecoration(
@@ -476,14 +507,15 @@ class _AuthenticationPageWidgetState extends State<AuthenticationPageWidget>
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 24.0, 0.0, 0.0),
                                     child: FFButtonWidget(
+                                      key: ValueKey('Button-Login_708q'),
                                       onPressed: () async {
                                         GoRouter.of(context).prepareAuthEvent();
 
                                         final user =
                                             await authManager.signInWithEmail(
                                           context,
-                                          _model.emailAddressLoginController1
-                                              .text,
+                                          _model
+                                              .emailAddressLoginController.text,
                                           _model.passwordLoginController.text,
                                         );
                                         if (user == null) {
@@ -491,7 +523,7 @@ class _AuthenticationPageWidgetState extends State<AuthenticationPageWidget>
                                         }
 
                                         context.goNamedAuth(
-                                            'launchPage', context.mounted);
+                                            'connectingPage', context.mounted);
                                       },
                                       text: 'Sign in',
                                       options: FFButtonOptions(
@@ -526,7 +558,7 @@ class _AuthenticationPageWidgetState extends State<AuthenticationPageWidget>
                                         0.0, 20.0, 0.0, 0.0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
-                                        context.pushNamed('HomePage_User');
+                                        context.pushNamed('requestResetPage');
                                       },
                                       text: 'Forgot Password?',
                                       options: FFButtonOptions(
@@ -604,7 +636,8 @@ class _AuthenticationPageWidgetState extends State<AuthenticationPageWidget>
                                             }
 
                                             context.goNamedAuth(
-                                                'launchPage', context.mounted);
+                                                'connectingPage',
+                                                context.mounted);
                                           },
                                           child: Container(
                                             width: 50.0,
@@ -644,7 +677,8 @@ class _AuthenticationPageWidgetState extends State<AuthenticationPageWidget>
                                             }
 
                                             context.goNamedAuth(
-                                                'launchPage', context.mounted);
+                                                'connectingPage',
+                                                context.mounted);
                                           },
                                           child: Container(
                                             width: 50.0,
@@ -690,6 +724,7 @@ class _AuthenticationPageWidgetState extends State<AuthenticationPageWidget>
                                         0.0, 20.0, 0.0, 0.0),
                                     child: TextFormField(
                                       controller: _model.emailAddressController,
+                                      focusNode: _model.emailAddressFocusNode,
                                       obscureText: false,
                                       decoration: InputDecoration(
                                         labelText: 'Email Address',
@@ -755,6 +790,7 @@ class _AuthenticationPageWidgetState extends State<AuthenticationPageWidget>
                                             fontSize: 14.0,
                                             fontWeight: FontWeight.normal,
                                           ),
+                                      keyboardType: TextInputType.emailAddress,
                                       validator: _model
                                           .emailAddressControllerValidator
                                           .asValidator(context),
@@ -765,6 +801,7 @@ class _AuthenticationPageWidgetState extends State<AuthenticationPageWidget>
                                         0.0, 12.0, 0.0, 0.0),
                                     child: TextFormField(
                                       controller: _model.passwordController,
+                                      focusNode: _model.passwordFocusNode,
                                       obscureText: !_model.passwordVisibility,
                                       decoration: InputDecoration(
                                         labelText: 'Password',
@@ -856,6 +893,8 @@ class _AuthenticationPageWidgetState extends State<AuthenticationPageWidget>
                                     child: TextFormField(
                                       controller:
                                           _model.passwordConfirmController,
+                                      focusNode:
+                                          _model.passwordConfirmFocusNode,
                                       obscureText:
                                           !_model.passwordConfirmVisibility,
                                       decoration: InputDecoration(
@@ -989,7 +1028,7 @@ class _AuthenticationPageWidgetState extends State<AuthenticationPageWidget>
                                             ));
 
                                         context.goNamedAuth(
-                                            'launchPage', context.mounted);
+                                            'connectingPage', context.mounted);
                                       },
                                       text: 'Sign Up',
                                       options: FFButtonOptions(
@@ -1075,7 +1114,8 @@ class _AuthenticationPageWidgetState extends State<AuthenticationPageWidget>
                                             }
 
                                             context.goNamedAuth(
-                                                'launchPage', context.mounted);
+                                                'connectingPage',
+                                                context.mounted);
                                           },
                                           child: Container(
                                             width: 50.0,
@@ -1115,7 +1155,8 @@ class _AuthenticationPageWidgetState extends State<AuthenticationPageWidget>
                                             }
 
                                             context.goNamedAuth(
-                                                'launchPage', context.mounted);
+                                                'connectingPage',
+                                                context.mounted);
                                           },
                                           child: Container(
                                             width: 50.0,
