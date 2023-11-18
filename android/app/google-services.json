@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "281666506292",
+    "project_id": "upatrol-cdf52",
+    "storage_bucket": "upatrol-cdf52.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:281666506292:android:cfb69e6fff9d9ef8680461",
+        "android_client_info": {
+          "package_name": "com.flauters.upatrol"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "281666506292-ln5h6ij1o9nok50d6gj7lmo2ukqmlsf3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.flauters.upatrol",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "281666506292-sehe4mrjoaaeihmb4c9a27fl4o9ncvtt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDlyt35FgJ6BN2Jm2KCPnk7wE50KDVSaA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "281666506292-sehe4mrjoaaeihmb4c9a27fl4o9ncvtt.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "281666506292-3k37ofln32qjlhr2udq8hh09ckiietl9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.flauters.upatrol"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
