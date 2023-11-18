@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_button_tabbar.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -16,22 +15,14 @@ class HomePageRModel extends FlutterFlowModel<HomePageRWidget> {
 
   final unfocusNode = FocusNode();
   // State field(s) for TabBar widget.
-  TabController? tabBarController1;
-  int get tabBarCurrentIndex1 =>
-      tabBarController1 != null ? tabBarController1!.index : 0;
+  TabController? tabBarController;
+  int get tabBarCurrentIndex =>
+      tabBarController != null ? tabBarController!.index : 0;
 
   // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode1;
-  TextEditingController? textController1;
-  String? Function(BuildContext, String?)? textController1Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode2;
-  TextEditingController? textController2;
-  String? Function(BuildContext, String?)? textController2Validator;
-  // State field(s) for TabBar widget.
-  TabController? tabBarController2;
-  int get tabBarCurrentIndex2 =>
-      tabBarController2 != null ? tabBarController2!.index : 0;
+  FocusNode? textFieldFocusNode;
+  TextEditingController? textController;
+  String? Function(BuildContext, String?)? textControllerValidator;
 
   /// Initialization and disposal methods.
 
@@ -39,14 +30,9 @@ class HomePageRModel extends FlutterFlowModel<HomePageRWidget> {
 
   void dispose() {
     unfocusNode.dispose();
-    tabBarController1?.dispose();
-    textFieldFocusNode1?.dispose();
-    textController1?.dispose();
-
-    textFieldFocusNode2?.dispose();
-    textController2?.dispose();
-
-    tabBarController2?.dispose();
+    tabBarController?.dispose();
+    textFieldFocusNode?.dispose();
+    textController?.dispose();
   }
 
   /// Action blocks are added here.

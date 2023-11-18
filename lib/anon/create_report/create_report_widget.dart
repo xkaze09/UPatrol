@@ -1,4 +1,3 @@
-import '/flutter_flow/flutter_flow_button_tabbar.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -17,8 +16,7 @@ class CreateReportWidget extends StatefulWidget {
   _CreateReportWidgetState createState() => _CreateReportWidgetState();
 }
 
-class _CreateReportWidgetState extends State<CreateReportWidget>
-    with TickerProviderStateMixin {
+class _CreateReportWidgetState extends State<CreateReportWidget> {
   late CreateReportModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -30,15 +28,12 @@ class _CreateReportWidgetState extends State<CreateReportWidget>
 
     _model.textController1 ??= TextEditingController();
     _model.textFieldFocusNode1 ??= FocusNode();
+
     _model.textController2 ??= TextEditingController();
     _model.textFieldFocusNode2 ??= FocusNode();
+
     _model.textController3 ??= TextEditingController();
     _model.textFieldFocusNode3 ??= FocusNode();
-    _model.tabBarController = TabController(
-      vsync: this,
-      length: 2,
-      initialIndex: 0,
-    )..addListener(() => setState(() {}));
   }
 
   @override
@@ -85,57 +80,54 @@ class _CreateReportWidgetState extends State<CreateReportWidget>
                                     Align(
                                       alignment:
                                           AlignmentDirectional(0.00, -1.36),
-                                      child: Container(
-                                        width: 402.0,
-                                        height: 284.0,
-                                        decoration: BoxDecoration(
-                                          color: Color(0xFF9C78B7),
-                                          borderRadius:
-                                              BorderRadius.circular(40.0),
-                                        ),
-                                        child: Stack(
-                                          children: [
-                                            Text(
-                                              'Hello World',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 70.0, 0.0, 0.0),
+                                        child: Container(
+                                          width: 402.0,
+                                          height: 284.0,
+                                          decoration: BoxDecoration(
+                                            color: Color(0xFF9C78B7),
+                                            borderRadius: BorderRadius.only(
+                                              bottomLeft: Radius.circular(40.0),
+                                              bottomRight:
+                                                  Radius.circular(40.0),
+                                              topLeft: Radius.circular(0.0),
+                                              topRight: Radius.circular(0.0),
                                             ),
-                                            Text(
-                                              'Hello World',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
-                                            ),
-                                            Align(
-                                              alignment: AlignmentDirectional(
-                                                  0.03, 0.05),
-                                              child: Text(
-                                                'Create Report',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleLarge
-                                                        .override(
-                                                          fontFamily: 'Outfit',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryBackground,
-                                                          fontSize: 25.0,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                        ),
+                                          ),
+                                          child: Stack(
+                                            children: [
+                                              Align(
+                                                alignment: AlignmentDirectional(
+                                                    0.03, 0.05),
+                                                child: Text(
+                                                  'Create Report',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .titleLarge
+                                                      .override(
+                                                        fontFamily: 'Outfit',
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .primaryBackground,
+                                                        fontSize: 25.0,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                      ),
+                                                ),
                                               ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
                                     Align(
                                       alignment:
-                                          AlignmentDirectional(0.14, -0.62),
+                                          AlignmentDirectional(0.17, -0.62),
                                       child: Container(
                                         width: 341.0,
-                                        height: 225.0,
+                                        height: 214.0,
                                         decoration: BoxDecoration(
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryBackground,
@@ -171,7 +163,7 @@ class _CreateReportWidgetState extends State<CreateReportWidget>
                                                       .labelMedium
                                                       .override(
                                                         fontFamily:
-                                                            'Readex Pro',
+                                                            'Montserrat',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -271,7 +263,7 @@ class _CreateReportWidgetState extends State<CreateReportWidget>
                                                             .labelMedium
                                                             .override(
                                                               fontFamily:
-                                                                  'Readex Pro',
+                                                                  'Montserrat',
                                                               color: FlutterFlowTheme
                                                                       .of(context)
                                                                   .secondaryText,
@@ -284,7 +276,7 @@ class _CreateReportWidgetState extends State<CreateReportWidget>
                                                             .labelMedium
                                                             .override(
                                                               fontFamily:
-                                                                  'Readex Pro',
+                                                                  'Montserrat',
                                                               color: FlutterFlowTheme
                                                                       .of(context)
                                                                   .secondaryText,
@@ -354,7 +346,7 @@ class _CreateReportWidgetState extends State<CreateReportWidget>
                                                       .bodyMedium
                                                       .override(
                                                         fontFamily:
-                                                            'Readex Pro',
+                                                            'Montserrat',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -423,7 +415,7 @@ class _CreateReportWidgetState extends State<CreateReportWidget>
                                                         .titleSmall
                                                         .override(
                                                           fontFamily:
-                                                              'Readex Pro',
+                                                              'Montserrat',
                                                           color: Colors.white,
                                                         ),
                                                     elevation: 4.0,
@@ -444,7 +436,7 @@ class _CreateReportWidgetState extends State<CreateReportWidget>
                                     ),
                                     Align(
                                       alignment:
-                                          AlignmentDirectional(0.18, 0.02),
+                                          AlignmentDirectional(0.17, -0.02),
                                       child: Container(
                                         width: 341.0,
                                         height: 92.0,
@@ -473,7 +465,7 @@ class _CreateReportWidgetState extends State<CreateReportWidget>
                                                             .labelMedium
                                                             .override(
                                                               fontFamily:
-                                                                  'Readex Pro',
+                                                                  'Montserrat',
                                                               color: FlutterFlowTheme
                                                                       .of(context)
                                                                   .secondaryText,
@@ -485,7 +477,7 @@ class _CreateReportWidgetState extends State<CreateReportWidget>
                                                             .labelMedium
                                                             .override(
                                                               fontFamily:
-                                                                  'Readex Pro',
+                                                                  'Montserrat',
                                                               color: FlutterFlowTheme
                                                                       .of(context)
                                                                   .secondaryText,
@@ -555,7 +547,7 @@ class _CreateReportWidgetState extends State<CreateReportWidget>
                                                       .bodyMedium
                                                       .override(
                                                         fontFamily:
-                                                            'Readex Pro',
+                                                            'Montserrat',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -582,7 +574,7 @@ class _CreateReportWidgetState extends State<CreateReportWidget>
                                                         context)
                                                     .bodyMedium
                                                     .override(
-                                                      fontFamily: 'Readex Pro',
+                                                      fontFamily: 'Montserrat',
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -599,7 +591,7 @@ class _CreateReportWidgetState extends State<CreateReportWidget>
                                                         context)
                                                     .bodyMedium
                                                     .override(
-                                                      fontFamily: 'Readex Pro',
+                                                      fontFamily: 'Montserrat',
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -630,10 +622,10 @@ class _CreateReportWidgetState extends State<CreateReportWidget>
                                     ),
                                     Align(
                                       alignment:
-                                          AlignmentDirectional(0.08, 0.51),
+                                          AlignmentDirectional(0.04, 0.41),
                                       child: Container(
                                         width: 337.0,
-                                        height: 163.0,
+                                        height: 155.0,
                                         decoration: BoxDecoration(
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryBackground,
@@ -652,7 +644,7 @@ class _CreateReportWidgetState extends State<CreateReportWidget>
                                     ),
                                     Align(
                                       alignment:
-                                          AlignmentDirectional(0.62, 0.74),
+                                          AlignmentDirectional(0.59, 0.68),
                                       child: FFButtonWidget(
                                         onPressed: () {
                                           print('Button pressed ...');
@@ -671,7 +663,7 @@ class _CreateReportWidgetState extends State<CreateReportWidget>
                                               FlutterFlowTheme.of(context)
                                                   .titleSmall
                                                   .override(
-                                                    fontFamily: 'Readex Pro',
+                                                    fontFamily: 'Montserrat',
                                                     color: Colors.white,
                                                   ),
                                           elevation: 3.0,
@@ -686,7 +678,7 @@ class _CreateReportWidgetState extends State<CreateReportWidget>
                                     ),
                                     Align(
                                       alignment:
-                                          AlignmentDirectional(-0.55, 0.74),
+                                          AlignmentDirectional(-0.68, 0.68),
                                       child: FFButtonWidget(
                                         onPressed: () {
                                           print('Button pressed ...');
@@ -705,7 +697,7 @@ class _CreateReportWidgetState extends State<CreateReportWidget>
                                               FlutterFlowTheme.of(context)
                                                   .titleSmall
                                                   .override(
-                                                    fontFamily: 'Readex Pro',
+                                                    fontFamily: 'Montserrat',
                                                     color: Colors.white,
                                                   ),
                                           elevation: 3.0,
@@ -720,91 +712,7 @@ class _CreateReportWidgetState extends State<CreateReportWidget>
                                     ),
                                     Align(
                                       alignment:
-                                          AlignmentDirectional(0.00, 1.09),
-                                      child: Container(
-                                        width: 391.0,
-                                        height: 78.0,
-                                        decoration: BoxDecoration(
-                                          color: Color(0xFF9C78B7),
-                                        ),
-                                        child: Column(
-                                          children: [
-                                            Align(
-                                              alignment: Alignment(0.0, 0),
-                                              child: FlutterFlowButtonTabBar(
-                                                useToggleButtonStyle: true,
-                                                labelStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleMedium,
-                                                unselectedLabelStyle:
-                                                    TextStyle(),
-                                                labelColor: Colors.white,
-                                                unselectedLabelColor:
-                                                    Colors.white,
-                                                backgroundColor:
-                                                    Color(0xFF5B3491),
-                                                unselectedBackgroundColor:
-                                                    Color(0xFF9C78B7),
-                                                borderColor: Color(0xFF5B3491),
-                                                unselectedBorderColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .alternate,
-                                                borderWidth: 0.0,
-                                                borderRadius: 0.0,
-                                                elevation: 0.0,
-                                                labelPadding:
-                                                    EdgeInsetsDirectional
-                                                        .fromSTEB(
-                                                            0.0, 6.0, 0.0, 0.0),
-                                                buttonMargin:
-                                                    EdgeInsetsDirectional
-                                                        .fromSTEB(
-                                                            8.0, 0.0, 8.0, 0.0),
-                                                tabs: [
-                                                  Tab(
-                                                    text: 'Home',
-                                                    icon: Icon(
-                                                      Icons.home,
-                                                      size: 30.0,
-                                                    ),
-                                                    iconMargin:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 5.0,
-                                                                0.0, 5.0),
-                                                  ),
-                                                  Tab(
-                                                    text: 'Report',
-                                                    icon: Icon(
-                                                      Icons.create_outlined,
-                                                      size: 30.0,
-                                                    ),
-                                                    iconMargin:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 5.0,
-                                                                0.0, 5.0),
-                                                  ),
-                                                ],
-                                                controller:
-                                                    _model.tabBarController,
-                                              ),
-                                            ),
-                                            Expanded(
-                                              child: TabBarView(
-                                                controller:
-                                                    _model.tabBarController,
-                                                children: [
-                                                  Container(),
-                                                  Container(),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    Align(
-                                      alignment:
-                                          AlignmentDirectional(0.78, -0.03),
+                                          AlignmentDirectional(0.79, -0.07),
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             4.0, 4.0, 4.0, 4.0),
@@ -818,21 +726,93 @@ class _CreateReportWidgetState extends State<CreateReportWidget>
                                     ),
                                     Align(
                                       alignment:
-                                          AlignmentDirectional(0.78, -0.03),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            4.0, 4.0, 4.0, 4.0),
-                                        child: Icon(
-                                          Icons.keyboard_arrow_right_rounded,
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          size: 24.0,
-                                        ),
+                                          AlignmentDirectional(0.00, 1.00),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          FFButtonWidget(
+                                            onPressed: () {
+                                              print('Hm pressed ...');
+                                            },
+                                            text: '',
+                                            icon: Icon(
+                                              Icons.home,
+                                              size: 28.0,
+                                            ),
+                                            options: FFButtonOptions(
+                                              width: MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.5,
+                                              height: MediaQuery.sizeOf(context)
+                                                      .height *
+                                                  0.07,
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      24.0, 0.0, 24.0, 0.0),
+                                              iconPadding: EdgeInsetsDirectional
+                                                  .fromSTEB(5.0, 0.0, 0.0, 0.0),
+                                              color: Color(0xFF5B3491),
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall,
+                                              elevation: 0.0,
+                                              borderSide: BorderSide(
+                                                color: Colors.transparent,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(0.0),
+                                            ),
+                                          ),
+                                          FFButtonWidget(
+                                            onPressed: () {
+                                              print('Mp pressed ...');
+                                            },
+                                            text: '',
+                                            icon: Icon(
+                                              Icons.map_sharp,
+                                              size: 35.0,
+                                            ),
+                                            options: FFButtonOptions(
+                                              width: MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.5,
+                                              height: MediaQuery.sizeOf(context)
+                                                      .height *
+                                                  0.07,
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                              iconPadding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      10.0, 0.0, 0.0, 0.0),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .override(
+                                                        fontFamily:
+                                                            'Montserrat',
+                                                        color: Colors.white,
+                                                      ),
+                                              elevation: 0.0,
+                                              borderSide: BorderSide(
+                                                color: Colors.transparent,
+                                                width: 0.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(0.0),
+                                            ),
+                                          ),
+                                        ].divide(SizedBox(width: 0.0)),
                                       ),
                                     ),
                                     Align(
                                       alignment:
-                                          AlignmentDirectional(0.00, 1.02),
+                                          AlignmentDirectional(0.00, 0.93),
                                       child: FFButtonWidget(
                                         onPressed: () {
                                           print('Button pressed ...');
@@ -856,7 +836,7 @@ class _CreateReportWidgetState extends State<CreateReportWidget>
                                               FlutterFlowTheme.of(context)
                                                   .titleSmall
                                                   .override(
-                                                    fontFamily: 'Readex Pro',
+                                                    fontFamily: 'Montserrat',
                                                     color: Colors.white,
                                                   ),
                                           elevation: 3.0,
@@ -873,10 +853,10 @@ class _CreateReportWidgetState extends State<CreateReportWidget>
                                 ),
                               ),
                               Align(
-                                alignment: AlignmentDirectional(-0.88, -1.11),
+                                alignment: AlignmentDirectional(-0.78, -0.97),
                                 child: Container(
                                   width: 100.0,
-                                  height: 100.0,
+                                  height: 79.0,
                                   decoration: BoxDecoration(
                                     color: Color(0xFF9C78B7),
                                   ),
@@ -885,7 +865,7 @@ class _CreateReportWidgetState extends State<CreateReportWidget>
                                     child: Image.asset(
                                       'assets/images/UPatrol-logo.png',
                                       width: 200.0,
-                                      height: 184.0,
+                                      height: 160.0,
                                       fit: BoxFit.cover,
                                     ),
                                   ),
@@ -896,17 +876,26 @@ class _CreateReportWidgetState extends State<CreateReportWidget>
                         ],
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.95, -1.05),
-                        child: Container(
-                          width: 70.0,
-                          height: 70.0,
-                          clipBehavior: Clip.antiAlias,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                          ),
-                          child: Image.asset(
-                            'assets/images/anon.png',
-                            fit: BoxFit.contain,
+                        alignment: AlignmentDirectional(0.92, -0.97),
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.safePop();
+                          },
+                          child: Container(
+                            width: 70.0,
+                            height: 70.0,
+                            clipBehavior: Clip.antiAlias,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                            ),
+                            child: Image.asset(
+                              'assets/images/anon.png',
+                              fit: BoxFit.contain,
+                            ),
                           ),
                         ),
                       ),

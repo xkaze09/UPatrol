@@ -1,4 +1,3 @@
-import '/flutter_flow/flutter_flow_button_tabbar.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -25,10 +24,6 @@ class CreateReportModel extends FlutterFlowModel<CreateReportWidget> {
   FocusNode? textFieldFocusNode3;
   TextEditingController? textController3;
   String? Function(BuildContext, String?)? textController3Validator;
-  // State field(s) for TabBar widget.
-  TabController? tabBarController;
-  int get tabBarCurrentIndex =>
-      tabBarController != null ? tabBarController!.index : 0;
 
   /// Initialization and disposal methods.
 
@@ -44,8 +39,6 @@ class CreateReportModel extends FlutterFlowModel<CreateReportWidget> {
 
     textFieldFocusNode3?.dispose();
     textController3?.dispose();
-
-    tabBarController?.dispose();
   }
 
   /// Action blocks are added here.

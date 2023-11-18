@@ -15,18 +15,14 @@ class HomepageAnonModel extends FlutterFlowModel<HomepageAnonWidget> {
 
   final unfocusNode = FocusNode();
   // State field(s) for TabBar widget.
-  TabController? tabBarController1;
-  int get tabBarCurrentIndex1 =>
-      tabBarController1 != null ? tabBarController1!.index : 0;
+  TabController? tabBarController;
+  int get tabBarCurrentIndex =>
+      tabBarController != null ? tabBarController!.index : 0;
 
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
-  // State field(s) for TabBar widget.
-  TabController? tabBarController2;
-  int get tabBarCurrentIndex2 =>
-      tabBarController2 != null ? tabBarController2!.index : 0;
 
   /// Initialization and disposal methods.
 
@@ -34,11 +30,9 @@ class HomepageAnonModel extends FlutterFlowModel<HomepageAnonWidget> {
 
   void dispose() {
     unfocusNode.dispose();
-    tabBarController1?.dispose();
+    tabBarController?.dispose();
     textFieldFocusNode?.dispose();
     textController?.dispose();
-
-    tabBarController2?.dispose();
   }
 
   /// Action blocks are added here.

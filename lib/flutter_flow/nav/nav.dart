@@ -80,30 +80,20 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) => appStateNotifier.loggedIn
-          ? ConnectingPageWidget()
-          : LandingPageWidget(),
+          ? ConnectingPageAWidget()
+          : LandingPageAWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
-              ? ConnectingPageWidget()
-              : LandingPageWidget(),
+              ? ConnectingPageAWidget()
+              : LandingPageAWidget(),
         ),
         FFRoute(
-          name: 'authenticationPage',
-          path: '/authenticationPage',
-          builder: (context, params) => AuthenticationPageWidget(),
-        ),
-        FFRoute(
-          name: 'landingPage',
-          path: '/landingPage',
-          builder: (context, params) => LandingPageWidget(),
-        ),
-        FFRoute(
-          name: 'requestResetPage',
-          path: '/requestResetPage',
-          builder: (context, params) => RequestResetPageWidget(),
+          name: 'LandingPage-A',
+          path: '/landingPageA',
+          builder: (context, params) => LandingPageAWidget(),
         ),
         FFRoute(
           name: 'createReport',
@@ -121,17 +111,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => HomePageRWidget(),
         ),
         FFRoute(
-          name: 'homepageAnon',
-          path: '/homepageAnon',
-          builder: (context, params) => HomepageAnonWidget(),
-        ),
-        FFRoute(
-          name: 'launchPage',
-          path: '/launchPage',
-          builder: (context, params) => LaunchPageWidget(),
-        ),
-        FFRoute(
-          name: 'createReport-U',
+          name: 'CreateReport-U',
           path: '/createReportU',
           builder: (context, params) => CreateReportUWidget(),
         ),
@@ -141,29 +121,51 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => HomePageUWidget(),
         ),
         FFRoute(
-          name: 'connectingPage',
-          path: '/connectingPage',
-          builder: (context, params) => ConnectingPageWidget(),
+          name: 'ConnectingPage-A',
+          path: '/connectingPageA',
+          builder: (context, params) => ConnectingPageAWidget(),
         ),
         FFRoute(
-          name: 'logoutPage',
-          path: '/logoutPage',
-          builder: (context, params) => LogoutPageWidget(),
+          name: 'Map-U',
+          path: '/mapU',
+          builder: (context, params) => MapUWidget(),
         ),
         FFRoute(
-          name: 'logoutPage',
-          path: '/logoutPage',
-          builder: (context, params) => LogoutPageWidget(),
+          name: 'Profile-U',
+          path: '/profileU',
+          builder: (context, params) => ProfileUWidget(),
         ),
         FFRoute(
-          name: 'logoutPage',
-          path: '/logoutPage',
-          builder: (context, params) => LogoutPageWidget(),
+          name: 'Profile-M',
+          path: '/profileM',
+          builder: (context, params) => ProfileMWidget(),
         ),
         FFRoute(
-          name: 'logoutPage',
-          path: '/logoutPage',
-          builder: (context, params) => LogoutPageWidget(),
+          name: 'Profile-R',
+          path: '/profileR',
+          builder: (context, params) => ProfileRWidget(),
+        ),
+        FFRoute(
+          name: 'homepageAnon',
+          path: '/homepageAnon',
+          builder: (context, params) => HomepageAnonWidget(),
+        ),
+        FFRoute(
+          name: 'EditProfile-U',
+          path: '/editProfileU',
+          builder: (context, params) => EditProfileUWidget(),
+        ),
+        FFRoute(
+          name: 'AuthPage-A',
+          path: '/authPageA',
+          builder: (context, params) => AuthPageAWidget(),
+        ),
+        FFRoute(
+          name: 'PassResetPage',
+          path: '/passResetPage',
+          builder: (context, params) => PassResetPageWidget(
+            noEmail: params.getParam('noEmail', ParamType.bool),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -330,7 +332,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.location);
-            return '/landingPage';
+            return '/landingPageA';
           }
           return null;
         },
@@ -343,14 +345,11 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? Center(
-                  child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
-                    child: SpinKitThreeBounce(
-                      color: Color(0xFFB12FF6),
-                      size: 50.0,
-                    ),
+              ? Container(
+                  color: Colors.transparent,
+                  child: Image.asset(
+                    'assets/images/18.jpg',
+                    fit: BoxFit.cover,
                   ),
                 )
               : page;

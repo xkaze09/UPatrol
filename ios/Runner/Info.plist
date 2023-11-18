@@ -57,11 +57,13 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 
-
-	<key>NSCameraUsageDescription</key>
-    <string>UPatrol requires camera access to verify reports.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-    <string>UPatrol requires location access to locate reports accurately.</string>
+    <string>In order to search nearby, this app requires access to your current location.</string>
+	<key>NSCameraUsageDescription</key>
+    <string>In order to take a picture or video, this app requires permission to access the camera.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+    <string>In order to upload data, this app requires permission to access the photo library.</string>
+
 
     <key>LSApplicationQueriesSchemes</key>
     <array>
