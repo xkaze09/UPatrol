@@ -12,11 +12,11 @@ UPatrol is a mobile application designed to facilitate quick reporting of hazard
 - Porras, Sean Alexander
 - Salinas, Christian Justin
 
-## Software Requirements Specifications (SRS) Overview
+## Overview
 
 ### Purpose
 
-This document outlines the requirements for UPatrol, aiming to provide a comprehensive description of the app's purpose, interface, limitations, and interaction with external applications. It serves as a proposal for customer approval and a guide for the development team.
+This outlines the requirements for UPatrol, aiming to provide a comprehensive description of the app's purpose, interface, limitations, and interaction with external applications. It serves as a proposal for customer approval and a guide for the development team.
 
 ### Scope
 
