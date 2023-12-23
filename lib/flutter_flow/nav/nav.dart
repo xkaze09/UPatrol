@@ -96,11 +96,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => LandingPageAWidget(),
         ),
         FFRoute(
-          name: 'createReport',
-          path: '/createReport',
-          builder: (context, params) => CreateReportWidget(),
-        ),
-        FFRoute(
           name: 'HomePage-M',
           path: '/homePageM',
           builder: (context, params) => HomePageMWidget(),
@@ -116,24 +111,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => CreateReportUWidget(),
         ),
         FFRoute(
-          name: 'HomePage-U',
-          path: '/homePageU',
-          builder: (context, params) => HomePageUWidget(),
-        ),
-        FFRoute(
           name: 'ConnectingPage-A',
           path: '/connectingPageA',
           builder: (context, params) => ConnectingPageAWidget(),
         ),
         FFRoute(
-          name: 'Map-U',
-          path: '/mapU',
-          builder: (context, params) => MapUWidget(),
+          name: 'Map-Unified',
+          path: '/mapUnified',
+          builder: (context, params) => MapUnifiedWidget(),
         ),
         FFRoute(
-          name: 'Profile-U',
-          path: '/profileU',
-          builder: (context, params) => ProfileUWidget(),
+          name: 'Profile-Unified',
+          path: '/profileUnified',
+          builder: (context, params) => ProfileUnifiedWidget(),
         ),
         FFRoute(
           name: 'Profile-M',
@@ -146,7 +136,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => ProfileRWidget(),
         ),
         FFRoute(
-          name: 'homepageAnon',
+          name: 'Homepage-Anon',
           path: '/homepageAnon',
           builder: (context, params) => HomepageAnonWidget(),
         ),
@@ -166,6 +156,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => PassResetPageWidget(
             noEmail: params.getParam('noEmail', ParamType.bool),
           ),
+        ),
+        FFRoute(
+          name: 'CreateReport-Anon',
+          path: '/createReportAnon',
+          builder: (context, params) => CreateReportAnonWidget(),
+        ),
+        FFRoute(
+          name: 'HomePage-Unified',
+          path: '/homePageUnified',
+          builder: (context, params) => HomePageUnifiedWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -360,13 +360,20 @@ class FFRoute {
                   key: state.pageKey,
                   child: child,
                   transitionDuration: transitionInfo.duration,
-                  transitionsBuilder: PageTransition(
+                  transitionsBuilder:
+                      (context, animation, secondaryAnimation, child) =>
+                          PageTransition(
                     type: transitionInfo.transitionType,
                     duration: transitionInfo.duration,
                     reverseDuration: transitionInfo.duration,
                     alignment: transitionInfo.alignment,
                     child: child,
-                  ).transitionsBuilder,
+                  ).buildTransitions(
+                    context,
+                    animation,
+                    secondaryAnimation,
+                    child,
+                  ),
                 )
               : MaterialPage(key: state.pageKey, child: child);
         },

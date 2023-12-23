@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -31,15 +30,7 @@ class _ConnectingPageAWidgetState extends State<ConnectingPageAWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      if (valueOrDefault<bool>(currentUserDocument?.isModerator, false)) {
-        context.pushNamed('HomePage-M');
-      } else {
-        if (valueOrDefault<bool>(currentUserDocument?.isReceiver, false)) {
-          context.pushNamed('HomePage-R');
-        } else {
-          context.pushNamed('HomePage-U');
-        }
-      }
+      context.pushNamed('HomePage-Unified');
     });
   }
 
@@ -67,145 +58,146 @@ class _ConnectingPageAWidgetState extends State<ConnectingPageAWidget> {
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        body: Align(
-          alignment: AlignmentDirectional(0.00, 0.00),
-          child: Container(
-            width: MediaQuery.sizeOf(context).width * 1.0,
-            height: MediaQuery.sizeOf(context).height * 0.9,
-            child: Stack(
-              alignment: AlignmentDirectional(0.0, 0.0),
-              children: [
-                Align(
-                  alignment: AlignmentDirectional(0.00, -1.00),
-                  child: Container(
-                    width: MediaQuery.sizeOf(context).width * 1.0,
-                    height: MediaQuery.sizeOf(context).height * 0.5,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                    ),
-                  ),
-                ),
-                Align(
-                  alignment: AlignmentDirectional(0.00, 1.00),
-                  child: Container(
-                    width: MediaQuery.sizeOf(context).width * 1.0,
-                    height: MediaQuery.sizeOf(context).height * 0.46,
-                    decoration: BoxDecoration(
-                      color: Color(0xFF9C78B7),
-                    ),
-                  ),
-                ),
-                Align(
-                  alignment: AlignmentDirectional(-1.18, -0.02),
-                  child: Container(
-                    width: 100.0,
-                    height: 100.0,
-                    decoration: BoxDecoration(
-                      color: Color(0xFF9C78B7),
-                    ),
-                  ),
-                ),
-                Align(
-                  alignment: AlignmentDirectional(1.01, -0.09),
-                  child: Container(
-                    width: 100.0,
-                    height: 100.0,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                    ),
-                  ),
-                ),
-                Align(
-                  alignment: AlignmentDirectional(0.00, 1.00),
-                  child: Container(
-                    width: MediaQuery.sizeOf(context).width * 1.0,
-                    height: MediaQuery.sizeOf(context).height * 0.451,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(0.0),
-                        bottomRight: Radius.circular(0.0),
-                        topLeft: Radius.circular(113.0),
-                        topRight: Radius.circular(0.0),
-                      ),
-                    ),
-                  ),
-                ),
-                Align(
-                  alignment: AlignmentDirectional(0.00, 0.35),
-                  child: AnimatedContainer(
-                    duration: Duration(milliseconds: 420),
-                    curve: Curves.elasticOut,
-                    width: MediaQuery.sizeOf(context).width * 1.0,
-                    height: MediaQuery.sizeOf(context).height * 0.2,
-                    decoration: BoxDecoration(
-                      color: Color(0x00FFFFFF),
-                    ),
-                    child: Align(
-                      alignment: AlignmentDirectional(0.00, 0.00),
-                      child: GradientText(
-                        'Connecting...',
-                        textAlign: TextAlign.center,
-                        style:
-                            FlutterFlowTheme.of(context).headlineLarge.override(
-                                  fontFamily: 'Outfit',
-                                  fontSize: 45.0,
-                                  fontWeight: FontWeight.bold,
-                                  lineHeight: 1.0,
-                                ),
-                        colors: [
-                          FlutterFlowTheme.of(context).primary,
-                          Color(0xFF5B3491)
-                        ],
-                        gradientDirection: GradientDirection.ltr,
-                        gradientType: GradientType.linear,
-                      ),
-                    ),
-                  ),
-                ),
-                Align(
-                  alignment: AlignmentDirectional(0.00, -1.00),
-                  child: Container(
-                    width: MediaQuery.sizeOf(context).width * 1.0,
-                    height: MediaQuery.sizeOf(context).height * 0.45,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).primary,
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(0.0),
-                        bottomRight: Radius.circular(110.0),
-                        topLeft: Radius.circular(0.0),
-                        topRight: Radius.circular(0.0),
-                      ),
-                    ),
-                  ),
-                ),
-                Align(
-                  alignment: AlignmentDirectional(-0.05, -0.85),
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+        body: SafeArea(
+          top: true,
+          child: Align(
+            alignment: AlignmentDirectional(0.0, 0.0),
+            child: Container(
+              width: MediaQuery.sizeOf(context).width * 1.0,
+              height: MediaQuery.sizeOf(context).height * 1.0,
+              child: Stack(
+                alignment: AlignmentDirectional(0.0, 0.0),
+                children: [
+                  Align(
+                    alignment: AlignmentDirectional(0.0, -2.0),
                     child: Container(
-                      width: MediaQuery.sizeOf(context).width * 0.7,
-                      height: MediaQuery.sizeOf(context).height * 0.35,
+                      width: MediaQuery.sizeOf(context).width * 1.0,
+                      height: MediaQuery.sizeOf(context).height * 0.6,
+                      decoration: BoxDecoration(
+                        color: Color(0xFF2D1A53),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: AlignmentDirectional(0.0, 1.0),
+                    child: Container(
+                      width: MediaQuery.sizeOf(context).width * 1.0,
+                      height: MediaQuery.sizeOf(context).height * 0.45,
+                      decoration: BoxDecoration(
+                        color: Color(0xFFAE90C4),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: AlignmentDirectional(-1.18, -0.02),
+                    child: Container(
+                      width: 139.0,
+                      height: 100.0,
+                      decoration: BoxDecoration(
+                        color: Color(0xFFAE90C4),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: AlignmentDirectional(1.01, -0.09),
+                    child: Container(
+                      width: 100.0,
+                      height: 100.0,
+                      decoration: BoxDecoration(
+                        color: Color(0xFF2D1A53),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: AlignmentDirectional(0.0, 1.23),
+                    child: Container(
+                      width: MediaQuery.sizeOf(context).width * 1.0,
+                      height: MediaQuery.sizeOf(context).height * 0.506,
+                      decoration: BoxDecoration(
+                        color: Color(0xFF2D1A53),
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(0.0),
+                          bottomRight: Radius.circular(0.0),
+                          topLeft: Radius.circular(113.0),
+                          topRight: Radius.circular(0.0),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: AlignmentDirectional(0.0, 0.35),
+                    child: AnimatedContainer(
+                      duration: Duration(milliseconds: 420),
+                      curve: Curves.bounceOut,
+                      width: MediaQuery.sizeOf(context).width * 1.0,
+                      height: MediaQuery.sizeOf(context).height * 0.2,
                       decoration: BoxDecoration(
                         color: Color(0x00FFFFFF),
                       ),
                       child: Align(
-                        alignment: AlignmentDirectional(0.00, 0.00),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8.0),
-                          child: Image.asset(
-                            'assets/images/UPatrol-logo.png',
-                            width: MediaQuery.sizeOf(context).width * 1.0,
-                            height: MediaQuery.sizeOf(context).height * 1.0,
-                            fit: BoxFit.cover,
+                        alignment: AlignmentDirectional(0.0, 0.0),
+                        child: GradientText(
+                          'Connecting...',
+                          textAlign: TextAlign.center,
+                          style: FlutterFlowTheme.of(context)
+                              .headlineLarge
+                              .override(
+                                fontFamily: 'Outfit',
+                                fontSize: 40.0,
+                                fontWeight: FontWeight.bold,
+                                lineHeight: 1.0,
+                              ),
+                          colors: [Color(0xFF9263B1), Color(0xFFC48072)],
+                          gradientDirection: GradientDirection.ttb,
+                          gradientType: GradientType.linear,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: AlignmentDirectional(0.0, -1.82),
+                    child: Container(
+                      width: MediaQuery.sizeOf(context).width * 1.0,
+                      height: MediaQuery.sizeOf(context).height * 0.563,
+                      decoration: BoxDecoration(
+                        color: Color(0xFFAE90C4),
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(0.0),
+                          bottomRight: Radius.circular(110.0),
+                          topLeft: Radius.circular(0.0),
+                          topRight: Radius.circular(0.0),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: AlignmentDirectional(-0.05, -0.87),
+                    child: Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
+                      child: Container(
+                        width: MediaQuery.sizeOf(context).width * 0.7,
+                        height: MediaQuery.sizeOf(context).height * 0.35,
+                        decoration: BoxDecoration(
+                          color: Color(0x00FFFFFF),
+                        ),
+                        child: Align(
+                          alignment: AlignmentDirectional(0.0, 0.0),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(8.0),
+                            child: Image.asset(
+                              'assets/images/UPatrol-logo.png',
+                              width: MediaQuery.sizeOf(context).width * 1.0,
+                              height: MediaQuery.sizeOf(context).height * 1.0,
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

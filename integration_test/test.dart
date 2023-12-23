@@ -21,12 +21,12 @@ void main() async {
     await tester.pumpAndSettle(Duration(milliseconds: 5000));
     await tester.tap(find.byKey(ValueKey('Button_8t21')));
     await tester.pumpAndSettle(Duration(milliseconds: 2000));
-    await tester.tap(find.byKey(ValueKey('null_znm2')));
-    await tester.enterText(find.byKey(ValueKey('null_8udo')), 'test@test.com');
-    await tester.enterText(find.byKey(ValueKey('null_e1ul')), 'password');
-    await tester.tap(find.byKey(ValueKey('null_4hiq')));
+    await tester.tap(find.byKey(ValueKey('UNDEFINED')));
+    await tester.enterText(find.byKey(ValueKey('UNDEFINED')), 'test@test.com');
+    await tester.enterText(find.byKey(ValueKey('UNDEFINED')), 'password');
+    await tester.tap(find.byKey(ValueKey('UNDEFINED')));
     await tester.pumpAndSettle(Duration(milliseconds: 4000));
-    expect(find.byKey(ValueKey('null_m8be')), findsWidgets);
+    expect(find.byKey(ValueKey('UNDEFINED')), findsWidgets);
   });
 
   testWidgets('Log in with invalid Credentials', (WidgetTester tester) async {
@@ -39,13 +39,13 @@ void main() async {
     await tester.pumpAndSettle(Duration(milliseconds: 5000));
     await tester.tap(find.byKey(ValueKey('Button_8t21')));
     await tester.pumpAndSettle(Duration(milliseconds: 2000));
-    await tester.tap(find.byKey(ValueKey('null_xm6j')));
+    await tester.tap(find.byKey(ValueKey('UNDEFINED')));
     await tester.enterText(
-        find.byKey(ValueKey('null_zofx')), 'test@test123.com');
-    await tester.enterText(find.byKey(ValueKey('null_29q8')), 'password');
-    await tester.tap(find.byKey(ValueKey('null_kbt3')));
+        find.byKey(ValueKey('UNDEFINED')), 'test@test123.com');
+    await tester.enterText(find.byKey(ValueKey('UNDEFINED')), 'password');
+    await tester.tap(find.byKey(ValueKey('UNDEFINED')));
     await tester.pumpAndSettle(Duration(milliseconds: 4000));
-    expect(find.byKey(ValueKey('null_8cfh')), findsWidgets);
+    expect(find.byKey(ValueKey('UNDEFINED')), findsWidgets);
   });
 }
 

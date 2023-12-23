@@ -59,7 +59,7 @@ class _ProfileRWidgetState extends State<ProfileRWidget> {
               Stack(
                 children: [
                   Align(
-                    alignment: AlignmentDirectional(0.00, -1.00),
+                    alignment: AlignmentDirectional(0.0, -1.0),
                     child: Container(
                       width: MediaQuery.sizeOf(context).width * 1.0,
                       height: MediaQuery.sizeOf(context).height * 0.35,
@@ -75,7 +75,7 @@ class _ProfileRWidgetState extends State<ProfileRWidget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.00, 1.00),
+                    alignment: AlignmentDirectional(0.0, 1.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -119,8 +119,7 @@ class _ProfileRWidgetState extends State<ProfileRWidget> {
                           options: FFButtonOptions(
                             width: MediaQuery.sizeOf(context).width * 0.5,
                             height: MediaQuery.sizeOf(context).height * 0.07,
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
+                            padding: EdgeInsets.all(0.0),
                             iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 10.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).primary,
@@ -142,7 +141,7 @@ class _ProfileRWidgetState extends State<ProfileRWidget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.00, 0.00),
+                    alignment: AlignmentDirectional(0.0, 0.0),
                     child: Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 450.0, 0.0, 60.0),
@@ -150,7 +149,7 @@ class _ProfileRWidgetState extends State<ProfileRWidget> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Align(
-                            alignment: AlignmentDirectional(0.00, 0.00),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () {
                                 print('AboutMe pressed ...');
@@ -221,7 +220,7 @@ class _ProfileRWidgetState extends State<ProfileRWidget> {
                         color: Color(0x00FFFFFF),
                       ),
                       child: Align(
-                        alignment: AlignmentDirectional(-1.00, -1.00),
+                        alignment: AlignmentDirectional(-1.0, -1.0),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               10.0, 0.0, 0.0, 0.0),
@@ -247,14 +246,14 @@ class _ProfileRWidgetState extends State<ProfileRWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.00, 0.00),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 60.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(0.00, -1.00),
+                        alignment: AlignmentDirectional(0.0, -1.0),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 120.0, 0.0, 0.0),
@@ -265,9 +264,9 @@ class _ProfileRWidgetState extends State<ProfileRWidget> {
                               color: Color(0xFF5B3491),
                               shape: BoxShape.circle,
                             ),
-                            alignment: AlignmentDirectional(0.00, 0.00),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: Align(
-                              alignment: AlignmentDirectional(0.00, 0.00),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: Container(
                                 width: MediaQuery.sizeOf(context).width * 0.5,
                                 height: MediaQuery.sizeOf(context).width * 0.5,
@@ -278,7 +277,7 @@ class _ProfileRWidgetState extends State<ProfileRWidget> {
                                 child: Image.asset(
                                   'assets/images/Hey.png',
                                   fit: BoxFit.cover,
-                                  alignment: Alignment(0.00, 0.00),
+                                  alignment: Alignment(0.0, 0.0),
                                 ),
                               ),
                             ),
@@ -290,7 +289,7 @@ class _ProfileRWidgetState extends State<ProfileRWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.00, -0.78),
+                alignment: AlignmentDirectional(0.0, -0.78),
                 child: Text(
                   'bb_bbryyy',
                   style: FlutterFlowTheme.of(context).titleLarge.override(
@@ -300,7 +299,7 @@ class _ProfileRWidgetState extends State<ProfileRWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.00, -0.05),
+                alignment: AlignmentDirectional(0.0, -0.05),
                 child: Text(
                   'Neil Flauta',
                   style: FlutterFlowTheme.of(context).titleLarge.override(
@@ -312,7 +311,7 @@ class _ProfileRWidgetState extends State<ProfileRWidget> {
               Opacity(
                 opacity: 0.8,
                 child: Align(
-                  alignment: AlignmentDirectional(0.00, 0.02),
+                  alignment: AlignmentDirectional(0.0, 0.02),
                   child: Text(
                     '09123456789',
                     style: FlutterFlowTheme.of(context).titleSmall.override(
@@ -344,8 +343,7 @@ class _ProfileRWidgetState extends State<ProfileRWidget> {
                       height: 40.0,
                       padding: EdgeInsetsDirectional.fromSTEB(
                           21.0, 25.0, 21.0, 21.0),
-                      iconPadding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      iconPadding: EdgeInsets.all(0.0),
                       color: FlutterFlowTheme.of(context).accent1,
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(

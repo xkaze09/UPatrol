@@ -54,8 +54,12 @@
   <script src="flutter.js" defer></script>
 </head>
 <body>
+  
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCM1dsTdP8PO6jRjzTyVw8dN6ZlIuVYwxM"></script>
+  
+  
+  
   <script>
-    
     window.addEventListener('load', function (ev) {
       // Download main.dart.js
       _flutter.loader.loadEntrypoint({
@@ -66,16 +70,12 @@
         },
         onEntrypointLoaded: async function(engineInitializer) {
           // Initialize the Flutter engine
-          let appRunner = await engineInitializer.initializeEngine();
+          let appRunner = await engineInitializer.initializeEngine({});
           // Run the app
           await appRunner.runApp();
         }
       });
     });
   </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCM1dsTdP8PO6jRjzTyVw8dN6ZlIuVYwxM"></script>
-  
-  
-  
 </body>
 </html>

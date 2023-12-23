@@ -62,13 +62,13 @@ class _HomePageRWidgetState extends State<HomePageRWidget>
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: Color(0xFF514A6A),
         body: SafeArea(
           top: true,
           child: Stack(
             children: [
               Align(
-                alignment: AlignmentDirectional(0.00, -1.00),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Container(
                   width: MediaQuery.sizeOf(context).width * 1.0,
                   height: MediaQuery.sizeOf(context).height * 0.21,
@@ -84,7 +84,7 @@ class _HomePageRWidgetState extends State<HomePageRWidget>
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(-1.00, -1.00),
+                alignment: AlignmentDirectional(-1.0, -1.0),
                 child: Container(
                   width: MediaQuery.sizeOf(context).width * 0.3,
                   height: MediaQuery.sizeOf(context).height * 0.12,
@@ -92,7 +92,7 @@ class _HomePageRWidgetState extends State<HomePageRWidget>
                     color: Color(0x00FFFFFF),
                   ),
                   child: Align(
-                    alignment: AlignmentDirectional(-1.00, -1.00),
+                    alignment: AlignmentDirectional(-1.0, -1.0),
                     child: Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(10.0, 5.0, 10.0, 0.0),
@@ -103,7 +103,7 @@ class _HomePageRWidgetState extends State<HomePageRWidget>
                           width: MediaQuery.sizeOf(context).width * 1.0,
                           height: MediaQuery.sizeOf(context).height * 1.0,
                           fit: BoxFit.cover,
-                          alignment: Alignment(0.00, -1.00),
+                          alignment: Alignment(0.0, -1.0),
                         ),
                       ),
                     ),
@@ -111,7 +111,7 @@ class _HomePageRWidgetState extends State<HomePageRWidget>
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(1.00, -1.00),
+                alignment: AlignmentDirectional(1.0, -1.0),
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 5.0, 0.0),
                   child: Container(
@@ -121,8 +121,7 @@ class _HomePageRWidgetState extends State<HomePageRWidget>
                       color: Color(0x00FFFFFF),
                     ),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
-                          12.0, 12.0, 12.0, 12.0),
+                      padding: EdgeInsets.all(12.0),
                       child: Container(
                         width: MediaQuery.sizeOf(context).width * 1.0,
                         height: MediaQuery.sizeOf(context).width * 1.0,
@@ -140,7 +139,7 @@ class _HomePageRWidgetState extends State<HomePageRWidget>
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.00, 1.00),
+                alignment: AlignmentDirectional(0.0, 1.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -183,8 +182,7 @@ class _HomePageRWidgetState extends State<HomePageRWidget>
                       options: FFButtonOptions(
                         width: MediaQuery.sizeOf(context).width * 0.5,
                         height: MediaQuery.sizeOf(context).height * 0.07,
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        padding: EdgeInsets.all(0.0),
                         iconPadding:
                             EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).primary,
@@ -257,8 +255,7 @@ class _HomePageRWidgetState extends State<HomePageRWidget>
                                 Opacity(
                                   opacity: 0.5,
                                   child: Align(
-                                    alignment:
-                                        AlignmentDirectional(0.00, -1.00),
+                                    alignment: AlignmentDirectional(0.0, -1.0),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 40.0, 0.0, 0.0),
@@ -290,8 +287,7 @@ class _HomePageRWidgetState extends State<HomePageRWidget>
                                 Opacity(
                                   opacity: 0.5,
                                   child: Align(
-                                    alignment:
-                                        AlignmentDirectional(0.00, -1.00),
+                                    alignment: AlignmentDirectional(0.0, -1.0),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 40.0, 0.0, 0.0),
@@ -322,7 +318,7 @@ class _HomePageRWidgetState extends State<HomePageRWidget>
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.00, -0.48),
+                alignment: AlignmentDirectional(0.0, -0.48),
                 child: Padding(
                   padding:
                       EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 12.0),
@@ -350,7 +346,7 @@ class _HomePageRWidgetState extends State<HomePageRWidget>
                         ),
                       ),
                       child: Align(
-                        alignment: AlignmentDirectional(0.00, -0.80),
+                        alignment: AlignmentDirectional(0.0, -0.8),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               12.0, 0.0, 8.0, 0.0),
@@ -436,7 +432,7 @@ class _HomePageRWidgetState extends State<HomePageRWidget>
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.00, -0.79),
+                alignment: AlignmentDirectional(0.0, -0.79),
                 child: Text(
                   'Home Page',
                   style: FlutterFlowTheme.of(context).titleMedium.override(
@@ -469,8 +465,7 @@ class _HomePageRWidgetState extends State<HomePageRWidget>
                       height: 40.0,
                       padding: EdgeInsetsDirectional.fromSTEB(
                           21.0, 25.0, 21.0, 21.0),
-                      iconPadding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      iconPadding: EdgeInsets.all(0.0),
                       color: FlutterFlowTheme.of(context).accent1,
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(

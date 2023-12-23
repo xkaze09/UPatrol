@@ -1,7 +1,9 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/permissions_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -26,6 +28,13 @@ class _LandingPageAWidgetState extends State<LandingPageAWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => LandingPageAModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await requestPermission(locationPermission);
+      await requestPermission(cameraPermission);
+      await requestPermission(photoLibraryPermission);
+    });
   }
 
   @override
@@ -68,7 +77,7 @@ class _LandingPageAWidgetState extends State<LandingPageAWidget> {
               ),
             ),
             Align(
-              alignment: AlignmentDirectional(0.00, 0.00),
+              alignment: AlignmentDirectional(0.0, 0.0),
               child: Container(
                 width: MediaQuery.sizeOf(context).width * 1.0,
                 height: MediaQuery.sizeOf(context).height * 0.85,
@@ -76,33 +85,22 @@ class _LandingPageAWidgetState extends State<LandingPageAWidget> {
                   alignment: AlignmentDirectional(0.0, 0.0),
                   children: [
                     Align(
-                      alignment: AlignmentDirectional(0.00, -1.00),
+                      alignment: AlignmentDirectional(0.0, -1.0),
                       child: Container(
                         width: MediaQuery.sizeOf(context).width * 1.0,
-                        height: MediaQuery.sizeOf(context).height * 0.5,
+                        height: MediaQuery.sizeOf(context).height * 0.567,
                         decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
+                          color: Color(0xFF2D1A53),
                         ),
                       ),
                     ),
                     Align(
-                      alignment: AlignmentDirectional(0.00, 1.00),
+                      alignment: AlignmentDirectional(0.0, 1.0),
                       child: Container(
                         width: MediaQuery.sizeOf(context).width * 1.0,
-                        height: MediaQuery.sizeOf(context).height * 0.46,
+                        height: MediaQuery.sizeOf(context).height * 0.473,
                         decoration: BoxDecoration(
-                          color: Color(0xFF9C78B7),
-                        ),
-                      ),
-                    ),
-                    Align(
-                      alignment: AlignmentDirectional(-1.18, -0.02),
-                      child: Container(
-                        width: 100.0,
-                        height: 100.0,
-                        decoration: BoxDecoration(
-                          color: Color(0xFF9C78B7),
+                          color: Color(0xFFAE90C4),
                         ),
                       ),
                     ),
@@ -112,68 +110,17 @@ class _LandingPageAWidgetState extends State<LandingPageAWidget> {
                         width: 100.0,
                         height: 100.0,
                         decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
+                          color: Color(0xFF2D1A53),
                         ),
                       ),
                     ),
                     Align(
-                      alignment: AlignmentDirectional(0.00, 1.00),
+                      alignment: AlignmentDirectional(0.0, -1.52),
                       child: Container(
                         width: MediaQuery.sizeOf(context).width * 1.0,
-                        height: MediaQuery.sizeOf(context).height * 0.451,
+                        height: MediaQuery.sizeOf(context).height * 0.5,
                         decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(0.0),
-                            bottomRight: Radius.circular(0.0),
-                            topLeft: Radius.circular(113.0),
-                            topRight: Radius.circular(0.0),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Align(
-                      alignment: AlignmentDirectional(0.00, 0.30),
-                      child: AnimatedContainer(
-                        duration: Duration(milliseconds: 420),
-                        curve: Curves.elasticOut,
-                        width: MediaQuery.sizeOf(context).width * 1.0,
-                        height: MediaQuery.sizeOf(context).height * 0.2,
-                        decoration: BoxDecoration(
-                          color: Color(0x00FFFFFF),
-                        ),
-                        child: Align(
-                          alignment: AlignmentDirectional(0.00, 0.00),
-                          child: GradientText(
-                            'Welcome to \nUPatrol!',
-                            textAlign: TextAlign.center,
-                            style: FlutterFlowTheme.of(context)
-                                .headlineLarge
-                                .override(
-                                  fontFamily: 'Outfit',
-                                  fontSize: 48.0,
-                                  fontWeight: FontWeight.bold,
-                                  lineHeight: 1.0,
-                                ),
-                            colors: [
-                              FlutterFlowTheme.of(context).primary,
-                              Color(0xFF5B3491)
-                            ],
-                            gradientDirection: GradientDirection.ltr,
-                            gradientType: GradientType.linear,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Align(
-                      alignment: AlignmentDirectional(0.00, -1.00),
-                      child: Container(
-                        width: MediaQuery.sizeOf(context).width * 1.0,
-                        height: MediaQuery.sizeOf(context).height * 0.4,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).primary,
+                          color: Color(0xFFAE90C4),
                           borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(0.0),
                             bottomRight: Radius.circular(110.0),
@@ -184,7 +131,7 @@ class _LandingPageAWidgetState extends State<LandingPageAWidget> {
                       ),
                     ),
                     Align(
-                      alignment: AlignmentDirectional(-0.05, -0.90),
+                      alignment: AlignmentDirectional(-0.05, -0.94),
                       child: Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
@@ -195,7 +142,7 @@ class _LandingPageAWidgetState extends State<LandingPageAWidget> {
                             color: Color(0x00FFFFFF),
                           ),
                           child: Align(
-                            alignment: AlignmentDirectional(0.00, 0.00),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(8.0),
                               child: Image.asset(
@@ -209,75 +156,173 @@ class _LandingPageAWidgetState extends State<LandingPageAWidget> {
                         ),
                       ),
                     ),
+                    Align(
+                      alignment: AlignmentDirectional(-1.08, -0.11),
+                      child: Container(
+                        width: 127.0,
+                        height: 100.0,
+                        decoration: BoxDecoration(
+                          color: Color(0xFFAE90C4),
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: AlignmentDirectional(0.0, 1.37),
+                      child: Container(
+                        width: MediaQuery.sizeOf(context).width * 1.229,
+                        height: MediaQuery.sizeOf(context).height * 0.506,
+                        decoration: BoxDecoration(
+                          color: Color(0xFF2D1A53),
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(0.0),
+                            bottomRight: Radius.circular(0.0),
+                            topLeft: Radius.circular(113.0),
+                            topRight: Radius.circular(0.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: AlignmentDirectional(0.0, 0.28),
+                      child: AnimatedContainer(
+                        duration: Duration(milliseconds: 420),
+                        curve: Curves.elasticOut,
+                        width: MediaQuery.sizeOf(context).width * 1.0,
+                        height: MediaQuery.sizeOf(context).height * 0.2,
+                        decoration: BoxDecoration(
+                          color: Color(0x00FFFFFF),
+                        ),
+                        child: Align(
+                          alignment: AlignmentDirectional(0.0, 0.0),
+                          child: GradientText(
+                            'Welcome to \nUPatrol!',
+                            textAlign: TextAlign.center,
+                            style: FlutterFlowTheme.of(context)
+                                .headlineLarge
+                                .override(
+                                  fontFamily: 'Outfit',
+                                  fontSize: 50.0,
+                                  letterSpacing: 0.5,
+                                  fontWeight: FontWeight.bold,
+                                  lineHeight: 1.0,
+                                ),
+                            colors: [
+                              Color(0xFF9263B1),
+                              FlutterFlowTheme.of(context).tertiary
+                            ],
+                            gradientDirection: GradientDirection.ttb,
+                            gradientType: GradientType.linear,
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
             ),
             Align(
               alignment: AlignmentDirectional(0.03, 0.52),
-              child: FFButtonWidget(
-                onPressed: () async {
-                  context.pushNamed('createReport');
-                },
-                text: 'Quick Report',
-                options: FFButtonOptions(
-                  width: 300.0,
-                  height: 55.0,
-                  padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                  iconPadding:
-                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                  color: Color(0xFFBE6F5E),
-                  textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                        fontFamily: 'Red Hat Display',
-                        color: Colors.white,
-                        fontSize: 25.0,
-                        fontWeight: FontWeight.w500,
-                      ),
-                  elevation: 3.0,
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
-                    width: 1.0,
+              child: Material(
+                color: Colors.transparent,
+                elevation: 10.0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(50.0),
+                ),
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [Color(0xFFC28A7E), Color(0xFFA1503C)],
+                      stops: [0.0, 1.0],
+                      begin: AlignmentDirectional(0.0, -1.0),
+                      end: AlignmentDirectional(0, 1.0),
+                    ),
+                    borderRadius: BorderRadius.circular(50.0),
                   ),
-                  borderRadius: BorderRadius.circular(30.0),
+                  child: FFButtonWidget(
+                    onPressed: () async {
+                      context.pushNamed('CreateReport-Anon');
+                    },
+                    text: 'Quick Report',
+                    options: FFButtonOptions(
+                      width: MediaQuery.sizeOf(context).width * 0.5,
+                      height: MediaQuery.sizeOf(context).height * 0.06,
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                      iconPadding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: Color(0x004A216D),
+                      textStyle:
+                          FlutterFlowTheme.of(context).labelLarge.override(
+                                fontFamily: 'Outfit',
+                                color: FlutterFlowTheme.of(context).info,
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                      borderSide: BorderSide(
+                        color: Colors.transparent,
+                        width: 0.0,
+                      ),
+                      borderRadius: BorderRadius.circular(50.0),
+                    ),
+                  ),
                 ),
               ),
             ),
             Align(
               alignment: AlignmentDirectional(0.04, 0.72),
-              child: FFButtonWidget(
-                key: ValueKey('Button_8t21'),
-                onPressed: () async {
-                  context.pushNamed(
-                    'AuthPage-A',
-                    extra: <String, dynamic>{
-                      kTransitionInfoKey: TransitionInfo(
-                        hasTransition: true,
-                        transitionType: PageTransitionType.bottomToTop,
-                        duration: Duration(milliseconds: 200),
-                      ),
-                    },
-                  );
-                },
-                text: 'Get Started',
-                options: FFButtonOptions(
-                  width: 300.0,
-                  height: 55.0,
-                  padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                  iconPadding:
-                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                  color: Color(0xFF5B3491),
-                  textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                        fontFamily: 'Red Hat Display',
-                        color: Colors.white,
-                        fontSize: 25.0,
-                        fontWeight: FontWeight.w500,
-                      ),
-                  elevation: 3.0,
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
-                    width: 1.0,
+              child: Material(
+                color: Colors.transparent,
+                elevation: 10.0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(50.0),
+                ),
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [Color(0xFF9263B1), Color(0xFF56288A)],
+                      stops: [0.0, 1.0],
+                      begin: AlignmentDirectional(0.0, -1.0),
+                      end: AlignmentDirectional(0, 1.0),
+                    ),
+                    borderRadius: BorderRadius.circular(50.0),
                   ),
-                  borderRadius: BorderRadius.circular(30.0),
+                  child: FFButtonWidget(
+                    key: ValueKey('Button_8t21'),
+                    onPressed: () async {
+                      context.pushNamed(
+                        'AuthPage-A',
+                        extra: <String, dynamic>{
+                          kTransitionInfoKey: TransitionInfo(
+                            hasTransition: true,
+                            transitionType: PageTransitionType.bottomToTop,
+                            duration: Duration(milliseconds: 200),
+                          ),
+                        },
+                      );
+                    },
+                    text: 'Get Started',
+                    options: FFButtonOptions(
+                      width: MediaQuery.sizeOf(context).width * 0.5,
+                      height: MediaQuery.sizeOf(context).height * 0.06,
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                      iconPadding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: Color(0x005B3491),
+                      textStyle:
+                          FlutterFlowTheme.of(context).labelLarge.override(
+                                fontFamily: 'Outfit',
+                                color: FlutterFlowTheme.of(context).info,
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                      borderSide: BorderSide(
+                        color: Colors.transparent,
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+                  ),
                 ),
               ),
             ),

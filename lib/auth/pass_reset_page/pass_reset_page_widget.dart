@@ -121,17 +121,17 @@ class _PassResetPageWidgetState extends State<PassResetPageWidget> {
             child: Stack(
               children: [
                 Align(
-                  alignment: AlignmentDirectional(0.00, -1.00),
+                  alignment: AlignmentDirectional(0.0, -1.0),
                   child: Container(
                     width: MediaQuery.sizeOf(context).width * 1.0,
                     height: MediaQuery.sizeOf(context).height * 0.5,
                     decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      color: Color(0xFF341F5E),
                     ),
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0.00, 1.00),
+                  alignment: AlignmentDirectional(0.0, 1.0),
                   child: Container(
                     width: MediaQuery.sizeOf(context).width * 1.0,
                     height: MediaQuery.sizeOf(context).height * 0.5,
@@ -146,17 +146,17 @@ class _PassResetPageWidgetState extends State<PassResetPageWidget> {
                     width: 194.0,
                     height: 100.0,
                     decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      color: Color(0xFF2D1A53),
                     ),
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0.00, -1.00),
+                  alignment: AlignmentDirectional(0.0, -1.35),
                   child: Container(
                     width: MediaQuery.sizeOf(context).width * 1.0,
-                    height: MediaQuery.sizeOf(context).height * 0.452,
+                    height: MediaQuery.sizeOf(context).height * 0.5,
                     decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).primary,
+                      color: Color(0xFFAE90C4),
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(100.0),
                         bottomRight: Radius.circular(0.0),
@@ -170,19 +170,19 @@ class _PassResetPageWidgetState extends State<PassResetPageWidget> {
                   alignment: AlignmentDirectional(1.04, -0.01),
                   child: Container(
                     width: 100.0,
-                    height: 100.0,
+                    height: 217.0,
                     decoration: BoxDecoration(
-                      color: Color(0xFF9C78B7),
+                      color: Color(0xFFAE90C4),
                     ),
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0.00, 1.00),
+                  alignment: AlignmentDirectional(0.0, 1.51),
                   child: Container(
                     width: MediaQuery.sizeOf(context).width * 1.0,
-                    height: MediaQuery.sizeOf(context).height * 0.449,
+                    height: MediaQuery.sizeOf(context).height * 0.548,
                     decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      color: Color(0xFF2D1A53),
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(0.0),
                         bottomRight: Radius.circular(0.0),
@@ -203,7 +203,7 @@ class _PassResetPageWidgetState extends State<PassResetPageWidget> {
                         color: Color(0x00FFFFFF),
                       ),
                       child: Align(
-                        alignment: AlignmentDirectional(0.00, 0.00),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(8.0),
                           child: Image.asset(
@@ -218,7 +218,7 @@ class _PassResetPageWidgetState extends State<PassResetPageWidget> {
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0.00, 0.35),
+                  alignment: AlignmentDirectional(0.0, 0.35),
                   child: AnimatedContainer(
                     duration: Duration(milliseconds: 420),
                     curve: Curves.elasticOut,
@@ -228,52 +228,49 @@ class _PassResetPageWidgetState extends State<PassResetPageWidget> {
                       color: Color(0x00FFFFFF),
                     ),
                     child: Align(
-                      alignment: AlignmentDirectional(0.00, -0.45),
+                      alignment: AlignmentDirectional(0.0, -0.75),
                       child: GradientText(
                         'Reset Password',
                         textAlign: TextAlign.center,
                         style:
                             FlutterFlowTheme.of(context).headlineLarge.override(
                                   fontFamily: 'Outfit',
-                                  fontSize: 35.0,
+                                  fontSize: 40.0,
                                   fontWeight: FontWeight.bold,
                                   lineHeight: 1.0,
                                 ),
                         colors: [
-                          FlutterFlowTheme.of(context).primary,
-                          Color(0xFF5B3491)
+                          Color(0xFF9263B1),
+                          FlutterFlowTheme.of(context).tertiary
                         ],
-                        gradientDirection: GradientDirection.ltr,
+                        gradientDirection: GradientDirection.ttb,
                         gradientType: GradientType.linear,
                       ),
                     ),
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(-0.06, 0.40),
+                  alignment: AlignmentDirectional(-0.06, 0.4),
                   child: Material(
                     color: Colors.transparent,
-                    elevation: 3.0,
+                    elevation: 0.0,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0),
+                      borderRadius: BorderRadius.circular(0.0),
                     ),
                     child: Container(
-                      width: MediaQuery.sizeOf(context).width * 0.7,
-                      height: MediaQuery.sizeOf(context).height * 0.06,
+                      width: MediaQuery.sizeOf(context).width * 0.8,
+                      height: MediaQuery.sizeOf(context).height * 0.1,
                       decoration: BoxDecoration(
-                        color: Color(0xCCDADADA),
-                        borderRadius: BorderRadius.circular(15.0),
+                        borderRadius: BorderRadius.circular(0.0),
                       ),
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            15.0, 15.0, 15.0, 15.0),
+                        padding: EdgeInsets.all(15.0),
                         child: TextFormField(
                           controller: _model.emailTextController,
                           focusNode: _model.textFieldFocusNode,
                           autofocus: true,
                           obscureText: false,
                           decoration: InputDecoration(
-                            labelText: 'Email Address',
                             labelStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
@@ -282,11 +279,41 @@ class _PassResetPageWidgetState extends State<PassResetPageWidget> {
                                   fontSize: 15.0,
                                   fontWeight: FontWeight.w500,
                                 ),
-                            hintStyle: FlutterFlowTheme.of(context).labelMedium,
-                            enabledBorder: InputBorder.none,
-                            focusedBorder: InputBorder.none,
-                            errorBorder: InputBorder.none,
-                            focusedErrorBorder: InputBorder.none,
+                            hintText: 'Email Address',
+                            hintStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Montserrat',
+                                  color: Color(0xFF95A1AC),
+                                ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0xFFAE90C4),
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0xFFAE90C4),
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
                           ),
                           style: FlutterFlowTheme.of(context).bodyMedium,
                           validator: _model.emailTextControllerValidator
@@ -297,79 +324,133 @@ class _PassResetPageWidgetState extends State<PassResetPageWidget> {
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0.00, 0.65),
-                  child: Container(
-                    width: MediaQuery.sizeOf(context).width * 0.5,
-                    height: MediaQuery.sizeOf(context).height * 0.05,
-                    decoration: BoxDecoration(
-                      color: Color(0xFFBE6F5E),
-                      borderRadius: BorderRadius.circular(15.0),
+                  alignment: AlignmentDirectional(0.0, 0.65),
+                  child: Material(
+                    color: Colors.transparent,
+                    elevation: 10.0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0),
                     ),
-                    child: FFButtonWidget(
-                      onPressed: () {
-                        print('Button pressed ...');
-                      },
-                      text: 'Reset Password',
-                      options: FFButtonOptions(
-                        height: 40.0,
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            24.0, 0.0, 24.0, 0.0),
-                        iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).accent1,
-                        textStyle:
-                            FlutterFlowTheme.of(context).titleSmall.override(
-                                  fontFamily: 'Outfit',
-                                  color: Colors.white,
-                                ),
-                        elevation: 3.0,
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1.0,
+                    child: Container(
+                      width: MediaQuery.sizeOf(context).width * 0.5,
+                      height: MediaQuery.sizeOf(context).height * 0.05,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [Color(0xFFC28A7E), Color(0xFF9F5B4F)],
+                          stops: [0.0, 1.0],
+                          begin: AlignmentDirectional(0.0, -1.0),
+                          end: AlignmentDirectional(0, 1.0),
                         ),
-                        borderRadius: BorderRadius.circular(8.0),
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      child: FFButtonWidget(
+                        onPressed: () async {
+                          if (_model.invalidEmail == false) {
+                            if (_model.emailTextController.text.isEmpty) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    'Email required!',
+                                  ),
+                                ),
+                              );
+                              return;
+                            }
+                            await authManager.resetPassword(
+                              email: _model.emailTextController.text,
+                              context: context,
+                            );
+                            await showDialog(
+                              context: context,
+                              builder: (alertDialogContext) {
+                                return AlertDialog(
+                                  title: Text('Password Reset'),
+                                  content: Text(
+                                      'Please check your email for instructions on resetting your password.'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () =>
+                                          Navigator.pop(alertDialogContext),
+                                      child: Text('Ok'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          }
+                        },
+                        text: 'Reset Password',
+                        options: FFButtonOptions(
+                          height: 40.0,
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              24.0, 0.0, 24.0, 0.0),
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color: Color(0x00C48072),
+                          textStyle:
+                              FlutterFlowTheme.of(context).titleSmall.override(
+                                    fontFamily: 'Outfit',
+                                    color: Colors.white,
+                                  ),
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
                       ),
                     ),
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0.00, 0.80),
-                  child: Container(
-                    width: MediaQuery.sizeOf(context).width * 0.5,
-                    height: MediaQuery.sizeOf(context).height * 0.05,
-                    decoration: BoxDecoration(
-                      color: Color(0xFF9C78B7),
-                      borderRadius: BorderRadius.circular(15.0),
+                  alignment: AlignmentDirectional(0.0, 0.81),
+                  child: Material(
+                    color: Colors.transparent,
+                    elevation: 10.0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0),
                     ),
-                    child: FFButtonWidget(
-                      onPressed: () async {
-                        context.pushNamed('AuthPage-A');
-                      },
-                      text: 'Back',
-                      options: FFButtonOptions(
-                        height: 40.0,
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            24.0, 0.0, 24.0, 0.0),
-                        iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).primary,
-                        textStyle:
-                            FlutterFlowTheme.of(context).titleSmall.override(
-                                  fontFamily: 'Outfit',
-                                  color: Colors.white,
-                                ),
-                        elevation: 3.0,
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1.0,
+                    child: Container(
+                      width: MediaQuery.sizeOf(context).width * 0.5,
+                      height: MediaQuery.sizeOf(context).height * 0.05,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [Color(0xFF9263B1), Color(0xFF56288A)],
+                          stops: [0.0, 1.0],
+                          begin: AlignmentDirectional(0.0, -1.0),
+                          end: AlignmentDirectional(0, 1.0),
                         ),
-                        borderRadius: BorderRadius.circular(8.0),
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      child: FFButtonWidget(
+                        onPressed: () async {
+                          context.safePop();
+                        },
+                        text: 'Back',
+                        options: FFButtonOptions(
+                          height: 40.0,
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              24.0, 0.0, 24.0, 0.0),
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color: Color(0x009C78B7),
+                          textStyle:
+                              FlutterFlowTheme.of(context).titleSmall.override(
+                                    fontFamily: 'Outfit',
+                                    color: Colors.white,
+                                  ),
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(0.0),
+                        ),
                       ),
                     ),
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0.00, 0.52),
+                  alignment: AlignmentDirectional(0.0, 0.52),
                   child: Container(
                     width: MediaQuery.sizeOf(context).width * 1.0,
                     height: MediaQuery.sizeOf(context).height * 0.06,
@@ -381,7 +462,7 @@ class _PassResetPageWidgetState extends State<PassResetPageWidget> {
                                   _model.emailTextController.text != '') &&
                               _model.invalidEmail,
                       child: Align(
-                        alignment: AlignmentDirectional(0.00, 0.00),
+                        alignment: AlignmentDirectional(0.0, -0.3),
                         child: AutoSizeText(
                           'Email Not Found',
                           textAlign: TextAlign.center,
