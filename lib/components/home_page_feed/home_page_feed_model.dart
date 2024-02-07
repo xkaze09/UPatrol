@@ -1,13 +1,14 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/components/marker_details/marker_details_widget.dart';
+import '/components/report_tab/report_tab_widget.dart';
 import '/flutter_flow/flutter_flow_button_tabbar.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'dart:async';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'home_page_feed_widget.dart' show HomePageFeedWidget;
-import 'package:auto_size_text/auto_size_text.dart';
+import 'package:badges/badges.dart' as badges;
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -15,6 +16,21 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class HomePageFeedModel extends FlutterFlowModel<HomePageFeedWidget> {
+  ///  Local state fields for this component.
+
+  String? sortCondition;
+
+  bool sortIncreasing = false;
+
+  List<ReportsRecord> reportsList = [];
+  void addToReportsList(ReportsRecord item) => reportsList.add(item);
+  void removeFromReportsList(ReportsRecord item) => reportsList.remove(item);
+  void removeAtIndexFromReportsList(int index) => reportsList.removeAt(index);
+  void insertAtIndexInReportsList(int index, ReportsRecord item) =>
+      reportsList.insert(index, item);
+  void updateReportsListAtIndex(int index, Function(ReportsRecord) updateFn) =>
+      reportsList[index] = updateFn(reportsList[index]);
+
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for TabBar widget.
@@ -22,39 +38,15 @@ class HomePageFeedModel extends FlutterFlowModel<HomePageFeedWidget> {
   int get tabBarCurrentIndex =>
       tabBarController != null ? tabBarController!.index : 0;
 
-  bool firestoreRequestCompleted = false;
-  String? firestoreRequestLastUniqueKey;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode;
-  TextEditingController? textController;
-  String? Function(BuildContext, String?)? textControllerValidator;
-
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}
 
   void dispose() {
     tabBarController?.dispose();
-    textFieldFocusNode?.dispose();
-    textController?.dispose();
   }
 
   /// Action blocks are added here.
 
   /// Additional helper methods are added here.
-
-  Future waitForFirestoreRequestCompleted({
-    double minWait = 0,
-    double maxWait = double.infinity,
-  }) async {
-    final stopwatch = Stopwatch()..start();
-    while (true) {
-      await Future.delayed(Duration(milliseconds: 50));
-      final timeElapsed = stopwatch.elapsedMilliseconds;
-      final requestComplete = firestoreRequestCompleted;
-      if (timeElapsed > maxWait || (requestComplete && timeElapsed > minWait)) {
-        break;
-      }
-    }
-  }
 }

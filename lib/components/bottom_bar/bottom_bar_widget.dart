@@ -12,15 +12,17 @@ export 'bottom_bar_model.dart';
 
 class BottomBarWidget extends StatefulWidget {
   const BottomBarWidget({
-    Key? key,
+    super.key,
     bool? disable,
+    String? active,
   })  : this.disable = disable ?? false,
-        super(key: key);
+        this.active = active ?? 'home';
 
   final bool disable;
+  final String active;
 
   @override
-  _BottomBarWidgetState createState() => _BottomBarWidgetState();
+  State<BottomBarWidget> createState() => _BottomBarWidgetState();
 }
 
 class _BottomBarWidgetState extends State<BottomBarWidget> {
@@ -59,7 +61,7 @@ class _BottomBarWidgetState extends State<BottomBarWidget> {
                 width: MediaQuery.sizeOf(context).width * 1.0,
                 height: 80.0,
                 decoration: BoxDecoration(
-                  color: Color(0xFF4B3969),
+                  color: FlutterFlowTheme.of(context).alternate,
                 ),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
@@ -73,7 +75,7 @@ class _BottomBarWidgetState extends State<BottomBarWidget> {
                       icon: Icon(
                         Icons.home,
                         color: Color(0xFF95A1AC),
-                        size: 28.0,
+                        size: 40.0,
                       ),
                       options: FFButtonOptions(
                         width: MediaQuery.sizeOf(context).width * 0.5,
@@ -81,7 +83,7 @@ class _BottomBarWidgetState extends State<BottomBarWidget> {
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
                         color: Colors.transparent,
                         textStyle: FlutterFlowTheme.of(context).titleSmall,
                         elevation: 0.0,
@@ -107,7 +109,7 @@ class _BottomBarWidgetState extends State<BottomBarWidget> {
                         height: MediaQuery.sizeOf(context).height * 1.0,
                         padding: EdgeInsets.all(0.0),
                         iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(25.0, 0.0, 0.0, 0.0),
                         color: Colors.transparent,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
@@ -131,14 +133,17 @@ class _BottomBarWidgetState extends State<BottomBarWidget> {
                     currentUserDocument?.isModerator, false) &&
                 !widget.disable)
               Align(
-                alignment: AlignmentDirectional(0.0, 0.0),
+                alignment: AlignmentDirectional(0.0, 1.0),
                 child: AuthUserStreamWidget(
                   builder: (context) => Container(
                     width: MediaQuery.sizeOf(context).width * 0.23,
                     height: MediaQuery.sizeOf(context).width * 0.23,
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
-                        colors: [Color(0xFF56288A), Color(0xFFC28A7E)],
+                        colors: [
+                          FlutterFlowTheme.of(context).primary,
+                          FlutterFlowTheme.of(context).secondaryText
+                        ],
                         stops: [0.0, 1.0],
                         begin: AlignmentDirectional(0.59, -1.0),
                         end: AlignmentDirectional(-0.59, 1.0),
@@ -171,7 +176,7 @@ class _BottomBarWidgetState extends State<BottomBarWidget> {
                           color: Colors.transparent,
                           width: 1.0,
                         ),
-                        borderRadius: BorderRadius.circular(0.0),
+                        borderRadius: BorderRadius.circular(12.0),
                       ),
                     ),
                   ),

@@ -2,10 +2,12 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
+import 'package:u_patrol/index.dart';
 import 'package:u_patrol/main.dart';
 import 'package:u_patrol/flutter_flow/flutter_flow_util.dart';
 
 import 'package:u_patrol/backend/firebase/firebase_config.dart';
+import 'package:u_patrol/auth/firebase_auth/auth_util.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 void main() async {
@@ -14,7 +16,8 @@ void main() async {
   testWidgets('Log in with Valid Credentials', (WidgetTester tester) async {
     _overrideOnError();
     await initFirebase();
-    await FirebaseAuth.instance.signOut();
+
+    await authManager.signOut();
 
     await tester.pumpWidget(MyApp());
 
@@ -32,7 +35,8 @@ void main() async {
   testWidgets('Log in with invalid Credentials', (WidgetTester tester) async {
     _overrideOnError();
     await initFirebase();
-    await FirebaseAuth.instance.signOut();
+
+    await authManager.signOut();
 
     await tester.pumpWidget(MyApp());
 

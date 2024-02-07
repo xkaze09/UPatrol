@@ -1,7 +1,7 @@
 import '/backend/backend.dart';
 import '/components/bottom_bar/bottom_bar_widget.dart';
 import '/components/header_bar/header_bar_widget.dart';
-import '/components/marker_details/marker_details_widget.dart';
+import '/components/report_tab/report_tab_widget.dart';
 import '/flutter_flow/flutter_flow_google_map.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -19,10 +19,10 @@ import 'map_unified_model.dart';
 export 'map_unified_model.dart';
 
 class MapUnifiedWidget extends StatefulWidget {
-  const MapUnifiedWidget({Key? key}) : super(key: key);
+  const MapUnifiedWidget({super.key});
 
   @override
-  _MapUnifiedWidgetState createState() => _MapUnifiedWidgetState();
+  State<MapUnifiedWidget> createState() => _MapUnifiedWidgetState();
 }
 
 class _MapUnifiedWidgetState extends State<MapUnifiedWidget> {
@@ -69,8 +69,6 @@ class _MapUnifiedWidgetState extends State<MapUnifiedWidget> {
 
     getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0), cached: true)
         .then((loc) => setState(() => currentUserLocationValue = loc));
-    _model.textController ??= TextEditingController();
-    _model.textFieldFocusNode ??= FocusNode();
   }
 
   @override
@@ -144,7 +142,7 @@ class _MapUnifiedWidgetState extends State<MapUnifiedWidget> {
                       width: 100.0,
                       height: MediaQuery.sizeOf(context).height * 0.2,
                       decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        color: FlutterFlowTheme.of(context).tertiary,
                       ),
                     ),
                     Align(
@@ -168,7 +166,7 @@ class _MapUnifiedWidgetState extends State<MapUnifiedWidget> {
                                 .filterByDistance(
                                     mapUnifiedReportsRecordList.toList(),
                                     currentUserLocationValue!,
-                                    20.0)
+                                    3.0)
                                 .map(
                                   (marker) => FlutterFlowMarker(
                                     marker.reference.path,
@@ -181,7 +179,7 @@ class _MapUnifiedWidgetState extends State<MapUnifiedWidget> {
                                         0.5,
                                       );
                                       if ((_model.distres != null &&
-                                              _model.distres!.isNotEmpty) ==
+                                              (_model.distres)!.isNotEmpty) ==
                                           true) {
                                         showModalBottomSheet(
                                           isScrollControlled: true,
@@ -189,6 +187,7 @@ class _MapUnifiedWidgetState extends State<MapUnifiedWidget> {
                                           barrierColor: Colors.transparent,
                                           isDismissible: false,
                                           enableDrag: false,
+                                          useSafeArea: true,
                                           context: context,
                                           builder: (context) {
                                             return GestureDetector(
@@ -208,8 +207,8 @@ class _MapUnifiedWidgetState extends State<MapUnifiedWidget> {
                                                       MediaQuery.sizeOf(context)
                                                               .height *
                                                           1.0,
-                                                  child: MarkerDetailsWidget(
-                                                    markerReport:
+                                                  child: ReportTabWidget(
+                                                    report:
                                                         _model.distres!.first,
                                                   ),
                                                 ),
@@ -227,10 +226,10 @@ class _MapUnifiedWidgetState extends State<MapUnifiedWidget> {
                             markerColor: GoogleMarkerColor.violet,
                             mapType: MapType.normal,
                             style: GoogleMapStyle.standard,
-                            initialZoom: 16.0,
+                            initialZoom: 17.0,
                             allowInteraction: true,
                             allowZoom: true,
-                            showZoomControls: true,
+                            showZoomControls: false,
                             showLocation: true,
                             showCompass: false,
                             showMapToolbar: true,
@@ -253,103 +252,14 @@ class _MapUnifiedWidgetState extends State<MapUnifiedWidget> {
                     ),
                   ],
                 ),
-                wrapWithModel(
-                  model: _model.headerBarModel,
-                  updateCallback: () => setState(() {}),
-                  child: HeaderBarWidget(
-                    title: 'Map',
-                  ),
-                ),
-                Align(
-                  alignment: AlignmentDirectional(0.0, -0.59),
-                  child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 12.0),
-                    child: Container(
-                      height: 50.0,
-                      decoration: BoxDecoration(
-                        color: Color(0x80808080),
-                        boxShadow: [
-                          BoxShadow(
-                            blurRadius: 3.0,
-                            color: Color(0x33000000),
-                            offset: Offset(0.0, 1.0),
-                          )
-                        ],
-                        borderRadius: BorderRadius.circular(15.0),
-                        border: Border.all(
-                          color: Color(0x80808080),
-                        ),
-                      ),
-                      child: Align(
-                        alignment: AlignmentDirectional(0.0, -0.8),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              12.0, 0.0, 8.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Icon(
-                                Icons.search_rounded,
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                size: 24.0,
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      4.0, 0.0, 0.0, 0.0),
-                                  child: Container(
-                                    width: 200.0,
-                                    child: TextFormField(
-                                      controller: _model.textController,
-                                      focusNode: _model.textFieldFocusNode,
-                                      obscureText: false,
-                                      decoration: InputDecoration(
-                                        labelText: 'Search ',
-                                        labelStyle: FlutterFlowTheme.of(context)
-                                            .labelMedium
-                                            .override(
-                                              fontFamily: 'Outfit',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              fontSize: 14.0,
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                        hintStyle: FlutterFlowTheme.of(context)
-                                            .labelMedium
-                                            .override(
-                                              fontFamily: 'Outfit',
-                                              color: Color(0xFF606A85),
-                                              fontSize: 14.0,
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                        enabledBorder: InputBorder.none,
-                                        focusedBorder: InputBorder.none,
-                                        errorBorder: InputBorder.none,
-                                        focusedErrorBorder: InputBorder.none,
-                                        filled: true,
-                                        fillColor: Color(0x80808080),
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Plus Jakarta Sans',
-                                            color: Color(0xFF15161E),
-                                            fontSize: 14.0,
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                      cursorColor: Color(0xFF6F61EF),
-                                      validator: _model.textControllerValidator
-                                          .asValidator(context),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+                Container(
+                  height: MediaQuery.sizeOf(context).height * 0.2,
+                  decoration: BoxDecoration(),
+                  child: wrapWithModel(
+                    model: _model.headerBarModel,
+                    updateCallback: () => setState(() {}),
+                    child: HeaderBarWidget(
+                      title: 'Map',
                     ),
                   ),
                 ),
@@ -357,7 +267,7 @@ class _MapUnifiedWidgetState extends State<MapUnifiedWidget> {
                   alignment: AlignmentDirectional(0.0, 1.0),
                   child: Container(
                     width: MediaQuery.sizeOf(context).width * 1.0,
-                    height: MediaQuery.sizeOf(context).height * 0.2,
+                    height: MediaQuery.sizeOf(context).height * 0.12,
                     decoration: BoxDecoration(),
                     child: wrapWithModel(
                       model: _model.bottomBarModel,

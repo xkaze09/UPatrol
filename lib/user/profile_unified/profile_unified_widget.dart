@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
@@ -18,10 +17,10 @@ import 'profile_unified_model.dart';
 export 'profile_unified_model.dart';
 
 class ProfileUnifiedWidget extends StatefulWidget {
-  const ProfileUnifiedWidget({Key? key}) : super(key: key);
+  const ProfileUnifiedWidget({super.key});
 
   @override
-  _ProfileUnifiedWidgetState createState() => _ProfileUnifiedWidgetState();
+  State<ProfileUnifiedWidget> createState() => _ProfileUnifiedWidgetState();
 }
 
 class _ProfileUnifiedWidgetState extends State<ProfileUnifiedWidget> {
@@ -66,11 +65,15 @@ class _ProfileUnifiedWidgetState extends State<ProfileUnifiedWidget> {
         backgroundColor: Color(0xFF2D1A53),
         body: Stack(
           children: [
-            wrapWithModel(
-              model: _model.headerBarModel,
-              updateCallback: () => setState(() {}),
-              child: HeaderBarWidget(
-                title: 'Profile',
+            Container(
+              height: MediaQuery.sizeOf(context).height * 0.2,
+              decoration: BoxDecoration(),
+              child: wrapWithModel(
+                model: _model.headerBarModel,
+                updateCallback: () => setState(() {}),
+                child: HeaderBarWidget(
+                  title: 'Profile',
+                ),
               ),
             ),
             Align(
@@ -166,14 +169,17 @@ class _ProfileUnifiedWidgetState extends State<ProfileUnifiedWidget> {
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                     ),
-                                    child: CachedNetworkImage(
-                                      fadeInDuration:
-                                          Duration(milliseconds: 500),
-                                      fadeOutDuration:
-                                          Duration(milliseconds: 500),
-                                      imageUrl: currentUserPhoto,
+                                    child: Image.network(
+                                      currentUserPhoto,
                                       fit: BoxFit.cover,
                                       alignment: Alignment(0.0, 0.0),
+                                      errorBuilder:
+                                          (context, error, stackTrace) =>
+                                              Image.asset(
+                                        'assets/images/error_image.jpg',
+                                        fit: BoxFit.cover,
+                                        alignment: Alignment(0.0, 0.0),
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -204,8 +210,7 @@ class _ProfileUnifiedWidgetState extends State<ProfileUnifiedWidget> {
                                       .titleSmall
                                       .override(
                                         fontFamily: 'Montserrat',
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
+                                        color: Colors.white,
                                       ),
                                   minFontSize: 20.0,
                                 ),
@@ -318,7 +323,7 @@ class _ProfileUnifiedWidgetState extends State<ProfileUnifiedWidget> {
             Align(
               alignment: AlignmentDirectional(0.0, 1.0),
               child: Container(
-                height: MediaQuery.sizeOf(context).height * 0.2,
+                height: MediaQuery.sizeOf(context).height * 0.12,
                 decoration: BoxDecoration(),
                 child: wrapWithModel(
                   model: _model.bottomBarModel,

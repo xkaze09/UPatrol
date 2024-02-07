@@ -1,7 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
-import '/components/bottom_bar/bottom_bar_widget.dart';
 import '/components/header_bar/header_bar_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -18,18 +17,18 @@ import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'create_report_u_model.dart';
-export 'create_report_u_model.dart';
+import 'create_report_a_model.dart';
+export 'create_report_a_model.dart';
 
-class CreateReportUWidget extends StatefulWidget {
-  const CreateReportUWidget({super.key});
+class CreateReportAWidget extends StatefulWidget {
+  const CreateReportAWidget({super.key});
 
   @override
-  State<CreateReportUWidget> createState() => _CreateReportUWidgetState();
+  State<CreateReportAWidget> createState() => _CreateReportAWidgetState();
 }
 
-class _CreateReportUWidgetState extends State<CreateReportUWidget> {
-  late CreateReportUModel _model;
+class _CreateReportAWidgetState extends State<CreateReportAWidget> {
+  late CreateReportAModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   LatLng? currentUserLocationValue;
@@ -37,7 +36,7 @@ class _CreateReportUWidgetState extends State<CreateReportUWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => CreateReportUModel());
+    _model = createModel(context, () => CreateReportAModel());
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
@@ -85,7 +84,7 @@ class _CreateReportUWidgetState extends State<CreateReportUWidget> {
       _model.baseImage1 = await actions.convertImageFileToBase64(
         _model.uploadedLocalFile1,
       );
-      _model.reportImage = _model.uploadedLocalFile1;
+      _model.reportImageo = _model.uploadedLocalFile1;
       _model.base64Image = _model.baseImage1!;
     });
 
@@ -497,7 +496,7 @@ class _CreateReportUWidgetState extends State<CreateReportUWidget> {
                                     await actions.convertImageFileToBase64(
                                   _model.uploadedLocalFile2,
                                 );
-                                _model.reportImage = _model.uploadedLocalFile2;
+                                _model.reportImageo = _model.uploadedLocalFile2;
                                 _model.base64Image = _model.base64Image2!;
 
                                 setState(() {});
@@ -594,10 +593,10 @@ class _CreateReportUWidgetState extends State<CreateReportUWidget> {
                                             showLoading: true,
                                           );
                                           selectedUploadedFiles = _model
-                                                  .reportImage!
+                                                  .reportImageo!
                                                   .bytes!
                                                   .isNotEmpty
-                                              ? [_model.reportImage!]
+                                              ? [_model.reportImageo!]
                                               : <FFUploadedFile>[];
                                           selectedMedia =
                                               selectedFilesFromUploadedFiles(
@@ -655,7 +654,6 @@ class _CreateReportUWidgetState extends State<CreateReportUWidget> {
                                         image: _model.uploadedFileUrl3,
                                         category: _model.categoryDropdownValue,
                                         address: _model.address1,
-                                        reporter: currentUserReference,
                                       ));
                                       _model.reportSuccess =
                                           ReportsRecord.getDocumentFromData(
@@ -677,7 +675,6 @@ class _CreateReportUWidgetState extends State<CreateReportUWidget> {
                                                 category: _model
                                                     .categoryDropdownValue,
                                                 address: _model.address1,
-                                                reporter: currentUserReference,
                                               ),
                                               reportsRecordReference);
                                       if (_model.reportSuccess != null) {
@@ -737,7 +734,7 @@ class _CreateReportUWidgetState extends State<CreateReportUWidget> {
                                                 ) ??
                                                 false;
                                         if (confirmDialogResponse) {
-                                          context.pushNamed('HomePage-Unified');
+                                          context.goNamed('LandingPage-A');
                                         } else {
                                           Navigator.pop(context);
                                           setState(() {
@@ -869,7 +866,7 @@ class _CreateReportUWidgetState extends State<CreateReportUWidget> {
                                 color: FlutterFlowTheme.of(context).info,
                                 size: 24.0,
                               ),
-                              fillColor: FlutterFlowTheme.of(context).accent1,
+                              fillColor: Colors.transparent,
                               elevation: 2.0,
                               borderColor: Colors.transparent,
                               borderWidth: 2.0,
@@ -885,20 +882,6 @@ class _CreateReportUWidgetState extends State<CreateReportUWidget> {
                     ),
                   ),
                 ],
-              ),
-            ),
-            Align(
-              alignment: AlignmentDirectional(0.0, 1.0),
-              child: Container(
-                height: MediaQuery.sizeOf(context).height * 0.12,
-                decoration: BoxDecoration(),
-                child: wrapWithModel(
-                  model: _model.bottomBarModel,
-                  updateCallback: () => setState(() {}),
-                  child: BottomBarWidget(
-                    disable: true,
-                  ),
-                ),
               ),
             ),
           ],

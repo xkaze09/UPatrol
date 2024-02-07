@@ -24,35 +24,20 @@ class FFAppState extends ChangeNotifier {
     notifyListeners();
   }
 
-  final _reportsListManager = FutureRequestManager<List<ReportsRecord>>();
-  Future<List<ReportsRecord>> reportsList({
+  final _feedManager = StreamRequestManager<List<ReportsRecord>>();
+  Stream<List<ReportsRecord>> feed({
     String? uniqueQueryKey,
     bool? overrideCache,
-    required Future<List<ReportsRecord>> Function() requestFn,
+    required Stream<List<ReportsRecord>> Function() requestFn,
   }) =>
-      _reportsListManager.performRequest(
+      _feedManager.performRequest(
         uniqueQueryKey: uniqueQueryKey,
         overrideCache: overrideCache,
         requestFn: requestFn,
       );
-  void clearReportsListCache() => _reportsListManager.clear();
-  void clearReportsListCacheKey(String? uniqueKey) =>
-      _reportsListManager.clearRequest(uniqueKey);
-
-  final _userListManager = FutureRequestManager<List<UsersRecord>>();
-  Future<List<UsersRecord>> userList({
-    String? uniqueQueryKey,
-    bool? overrideCache,
-    required Future<List<UsersRecord>> Function() requestFn,
-  }) =>
-      _userListManager.performRequest(
-        uniqueQueryKey: uniqueQueryKey,
-        overrideCache: overrideCache,
-        requestFn: requestFn,
-      );
-  void clearUserListCache() => _userListManager.clear();
-  void clearUserListCacheKey(String? uniqueKey) =>
-      _userListManager.clearRequest(uniqueKey);
+  void clearFeedCache() => _feedManager.clear();
+  void clearFeedCacheKey(String? uniqueKey) =>
+      _feedManager.clearRequest(uniqueKey);
 }
 
 LatLng? _latLngFromString(String? val) {

@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import 'edit_profile_u_widget.dart' show EditProfileUWidget;
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
@@ -22,15 +23,13 @@ class EditProfileUModel extends FlutterFlowModel<EditProfileUWidget> {
   final unfocusNode = FocusNode();
   // Model for headerBar component.
   late HeaderBarModel headerBarModel;
+  // Model for bottomBar component.
+  late BottomBarModel bottomBarModel;
   bool isDataUploading = false;
   FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));
   String uploadedFileUrl = '';
 
-  // State field(s) for UserName widget.
-  FocusNode? userNameFocusNode;
-  TextEditingController? userNameController;
-  String? Function(BuildContext, String?)? userNameControllerValidator;
   // State field(s) for UserID widget.
   FocusNode? userIDFocusNode;
   TextEditingController? userIDController;
@@ -48,9 +47,7 @@ class EditProfileUModel extends FlutterFlowModel<EditProfileUWidget> {
   TextEditingController? contactNumController;
   String? Function(BuildContext, String?)? contactNumControllerValidator;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
-  List<ReportsRecord>? userReports;
-  // Model for bottomBar component.
-  late BottomBarModel bottomBarModel;
+  List<ReportsRecord>? userReport;
 
   /// Initialization and disposal methods.
 
@@ -62,9 +59,7 @@ class EditProfileUModel extends FlutterFlowModel<EditProfileUWidget> {
   void dispose() {
     unfocusNode.dispose();
     headerBarModel.dispose();
-    userNameFocusNode?.dispose();
-    userNameController?.dispose();
-
+    bottomBarModel.dispose();
     userIDFocusNode?.dispose();
     userIDController?.dispose();
 
@@ -76,8 +71,6 @@ class EditProfileUModel extends FlutterFlowModel<EditProfileUWidget> {
 
     contactNumFocusNode?.dispose();
     contactNumController?.dispose();
-
-    bottomBarModel.dispose();
   }
 
   /// Action blocks are added here.

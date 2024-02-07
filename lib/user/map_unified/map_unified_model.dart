@@ -1,7 +1,7 @@
 import '/backend/backend.dart';
 import '/components/bottom_bar/bottom_bar_widget.dart';
 import '/components/header_bar/header_bar_widget.dart';
-import '/components/marker_details/marker_details_widget.dart';
+import '/components/report_tab/report_tab_widget.dart';
 import '/flutter_flow/flutter_flow_google_map.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -39,10 +39,6 @@ class MapUnifiedModel extends FlutterFlowModel<MapUnifiedWidget> {
   List<ReportsRecord>? distres;
   // Model for headerBar component.
   late HeaderBarModel headerBarModel;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode;
-  TextEditingController? textController;
-  String? Function(BuildContext, String?)? textControllerValidator;
   // Model for bottomBar component.
   late BottomBarModel bottomBarModel;
 
@@ -56,9 +52,6 @@ class MapUnifiedModel extends FlutterFlowModel<MapUnifiedWidget> {
   void dispose() {
     unfocusNode.dispose();
     headerBarModel.dispose();
-    textFieldFocusNode?.dispose();
-    textController?.dispose();
-
     bottomBarModel.dispose();
   }
 

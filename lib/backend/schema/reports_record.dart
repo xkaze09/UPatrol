@@ -21,11 +21,6 @@ class ReportsRecord extends FirestoreRecord {
   String get id => _id ?? '';
   bool hasId() => _id != null;
 
-  // "user_id" field.
-  String? _userId;
-  String get userId => _userId ?? '';
-  bool hasUserId() => _userId != null;
-
   // "title" field.
   String? _title;
   String get title => _title ?? '';
@@ -56,27 +51,56 @@ class ReportsRecord extends FirestoreRecord {
   LatLng? get location => _location;
   bool hasLocation() => _location != null;
 
-  // "category" field.
-  String? _category;
-  String get category => _category ?? '';
-  bool hasCategory() => _category != null;
-
   // "image" field.
   String? _image;
   String get image => _image ?? '';
   bool hasImage() => _image != null;
 
+  // "address" field.
+  String? _address;
+  String get address => _address ?? '';
+  bool hasAddress() => _address != null;
+
+  // "reporter" field.
+  DocumentReference? _reporter;
+  DocumentReference? get reporter => _reporter;
+  bool hasReporter() => _reporter != null;
+
+  // "category" field.
+  String? _category;
+  String get category => _category ?? '';
+  bool hasCategory() => _category != null;
+
+  // "verifyTime" field.
+  DateTime? _verifyTime;
+  DateTime? get verifyTime => _verifyTime;
+  bool hasVerifyTime() => _verifyTime != null;
+
+  // "resolveTime" field.
+  DateTime? _resolveTime;
+  DateTime? get resolveTime => _resolveTime;
+  bool hasResolveTime() => _resolveTime != null;
+
+  // "resolvedBy" field.
+  DocumentReference? _resolvedBy;
+  DocumentReference? get resolvedBy => _resolvedBy;
+  bool hasResolvedBy() => _resolvedBy != null;
+
   void _initializeFields() {
     _id = snapshotData['id'] as String?;
-    _userId = snapshotData['user_id'] as String?;
     _title = snapshotData['title'] as String?;
     _description = snapshotData['description'] as String?;
     _isResolved = snapshotData['isResolved'] as bool?;
     _isVerified = snapshotData['isVerified'] as bool?;
     _timestamp = snapshotData['timestamp'] as DateTime?;
     _location = snapshotData['location'] as LatLng?;
-    _category = snapshotData['category'] as String?;
     _image = snapshotData['image'] as String?;
+    _address = snapshotData['address'] as String?;
+    _reporter = snapshotData['reporter'] as DocumentReference?;
+    _category = snapshotData['category'] as String?;
+    _verifyTime = snapshotData['verifyTime'] as DateTime?;
+    _resolveTime = snapshotData['resolveTime'] as DateTime?;
+    _resolvedBy = snapshotData['resolvedBy'] as DocumentReference?;
   }
 
   static CollectionReference get collection =>
@@ -115,28 +139,36 @@ class ReportsRecord extends FirestoreRecord {
 
 Map<String, dynamic> createReportsRecordData({
   String? id,
-  String? userId,
   String? title,
   String? description,
   bool? isResolved,
   bool? isVerified,
   DateTime? timestamp,
   LatLng? location,
-  String? category,
   String? image,
+  String? address,
+  DocumentReference? reporter,
+  String? category,
+  DateTime? verifyTime,
+  DateTime? resolveTime,
+  DocumentReference? resolvedBy,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'id': id,
-      'user_id': userId,
       'title': title,
       'description': description,
       'isResolved': isResolved,
       'isVerified': isVerified,
       'timestamp': timestamp,
       'location': location,
-      'category': category,
       'image': image,
+      'address': address,
+      'reporter': reporter,
+      'category': category,
+      'verifyTime': verifyTime,
+      'resolveTime': resolveTime,
+      'resolvedBy': resolvedBy,
     }.withoutNulls,
   );
 
@@ -149,29 +181,37 @@ class ReportsRecordDocumentEquality implements Equality<ReportsRecord> {
   @override
   bool equals(ReportsRecord? e1, ReportsRecord? e2) {
     return e1?.id == e2?.id &&
-        e1?.userId == e2?.userId &&
         e1?.title == e2?.title &&
         e1?.description == e2?.description &&
         e1?.isResolved == e2?.isResolved &&
         e1?.isVerified == e2?.isVerified &&
         e1?.timestamp == e2?.timestamp &&
         e1?.location == e2?.location &&
+        e1?.image == e2?.image &&
+        e1?.address == e2?.address &&
+        e1?.reporter == e2?.reporter &&
         e1?.category == e2?.category &&
-        e1?.image == e2?.image;
+        e1?.verifyTime == e2?.verifyTime &&
+        e1?.resolveTime == e2?.resolveTime &&
+        e1?.resolvedBy == e2?.resolvedBy;
   }
 
   @override
   int hash(ReportsRecord? e) => const ListEquality().hash([
         e?.id,
-        e?.userId,
         e?.title,
         e?.description,
         e?.isResolved,
         e?.isVerified,
         e?.timestamp,
         e?.location,
+        e?.image,
+        e?.address,
+        e?.reporter,
         e?.category,
-        e?.image
+        e?.verifyTime,
+        e?.resolveTime,
+        e?.resolvedBy
       ]);
 
   @override

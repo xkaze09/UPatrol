@@ -13,14 +13,14 @@ export 'header_bar_model.dart';
 
 class HeaderBarWidget extends StatefulWidget {
   const HeaderBarWidget({
-    Key? key,
+    super.key,
     required this.title,
-  }) : super(key: key);
+  });
 
   final String? title;
 
   @override
-  _HeaderBarWidgetState createState() => _HeaderBarWidgetState();
+  State<HeaderBarWidget> createState() => _HeaderBarWidgetState();
 }
 
 class _HeaderBarWidgetState extends State<HeaderBarWidget> {
@@ -51,103 +51,129 @@ class _HeaderBarWidgetState extends State<HeaderBarWidget> {
       alignment: AlignmentDirectional(0.0, -1.25),
       child: Container(
         width: MediaQuery.sizeOf(context).width * 1.0,
-        height: MediaQuery.sizeOf(context).height * 0.3,
+        height: MediaQuery.sizeOf(context).height * 0.985,
         decoration: BoxDecoration(
-          color: Color(0xFFAE90C4),
-          borderRadius: BorderRadius.circular(50.0),
+          gradient: LinearGradient(
+            colors: [
+              FlutterFlowTheme.of(context).primary,
+              FlutterFlowTheme.of(context).secondary
+            ],
+            stops: [0.0, 1.0],
+            begin: AlignmentDirectional(0.0, -1.0),
+            end: AlignmentDirectional(0, 1.0),
+          ),
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(50.0),
+            bottomRight: Radius.circular(50.0),
+            topLeft: Radius.circular(0.0),
+            topRight: Radius.circular(0.0),
+          ),
         ),
-        child: Stack(
-          children: [
-            Align(
-              alignment: AlignmentDirectional(-0.9, 0.0),
-              child: Container(
-                width: 90.0,
-                height: 90.0,
-                decoration: BoxDecoration(
-                  color: Color(0x00FFFFFF),
-                ),
-                child: Align(
-                  alignment: AlignmentDirectional(1.0, -1.0),
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(0.0),
-                      child: Image.asset(
-                        'assets/images/UPatrol-logo.png',
-                        width: MediaQuery.sizeOf(context).width * 1.0,
-                        height: MediaQuery.sizeOf(context).height * 1.0,
-                        fit: BoxFit.cover,
-                        alignment: Alignment(0.0, -1.0),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Align(
-              alignment: AlignmentDirectional(0.9, 0.0),
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 5.0, 0.0),
+        child: Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Stack(
+            children: [
+              Align(
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Container(
-                  width: 80.0,
-                  height: 80.0,
-                  decoration: BoxDecoration(
-                    color: Color(0x00FFFFFF),
+                  width: MediaQuery.sizeOf(context).width * 1.0,
+                  height: MediaQuery.sizeOf(context).height * 0.3,
+                  decoration: BoxDecoration(),
+                  child: Align(
+                    alignment: AlignmentDirectional(0.0, 0.0),
+                    child: GradientText(
+                      valueOrDefault<String>(
+                        widget.title,
+                        'Test Title',
+                      ),
+                      style:
+                          FlutterFlowTheme.of(context).headlineLarge.override(
+                                fontFamily: 'Outfit',
+                                fontSize: 30.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                      colors: [
+                        FlutterFlowTheme.of(context).tertiary,
+                        FlutterFlowTheme.of(context).tertiary
+                      ],
+                      gradientDirection: GradientDirection.ttb,
+                      gradientType: GradientType.linear,
+                    ),
                   ),
-                  child: AuthUserStreamWidget(
-                    builder: (context) => InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () async {
-                        context.pushNamed('Profile-Unified');
-                      },
-                      child: Container(
-                        width: MediaQuery.sizeOf(context).width * 1.0,
-                        height: MediaQuery.sizeOf(context).width * 1.0,
-                        clipBehavior: Clip.antiAlias,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                        ),
-                        child: CachedNetworkImage(
-                          fadeInDuration: Duration(milliseconds: 500),
-                          fadeOutDuration: Duration(milliseconds: 500),
-                          imageUrl: currentUserPhoto,
-                          fit: BoxFit.cover,
+                ),
+              ),
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Align(
+                    alignment: AlignmentDirectional(-1.0, -1.0),
+                    child: Container(
+                      width: 60.0,
+                      height: 60.0,
+                      decoration: BoxDecoration(
+                        color: Color(0x00FFFFFF),
+                      ),
+                      child: Align(
+                        alignment: AlignmentDirectional(0.0, 0.0),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(0.0),
+                          child: Image.asset(
+                            'assets/images/UPatrol-logo.png',
+                            width: MediaQuery.sizeOf(context).width * 1.0,
+                            height: MediaQuery.sizeOf(context).height * 1.0,
+                            fit: BoxFit.cover,
+                            alignment: Alignment(0.0, -1.0),
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ),
-            ),
-            Align(
-              alignment: AlignmentDirectional(0.0, 0.0),
-              child: Container(
-                width: MediaQuery.sizeOf(context).width * 1.0,
-                height: MediaQuery.sizeOf(context).height * 0.15,
-                decoration: BoxDecoration(),
-                child: Align(
-                  alignment: AlignmentDirectional(0.0, 1.0),
-                  child: GradientText(
-                    valueOrDefault<String>(
-                      widget.title,
-                      'Test Title',
-                    ),
-                    style: FlutterFlowTheme.of(context).headlineLarge.override(
-                          fontFamily: 'Outfit',
-                          fontSize: 30.0,
-                          fontWeight: FontWeight.bold,
+                  Align(
+                    alignment: AlignmentDirectional(0.8, -0.8),
+                    child: Container(
+                      width: 60.0,
+                      height: 60.0,
+                      decoration: BoxDecoration(
+                        color: Color(0x00FFFFFF),
+                        shape: BoxShape.circle,
+                      ),
+                      child: AuthUserStreamWidget(
+                        builder: (context) => InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.pushNamed('Profile-Unified');
+                          },
+                          child: Container(
+                            width: MediaQuery.sizeOf(context).width * 1.0,
+                            height: MediaQuery.sizeOf(context).width * 1.0,
+                            clipBehavior: Clip.antiAlias,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                            ),
+                            child: CachedNetworkImage(
+                              fadeInDuration: Duration(milliseconds: 500),
+                              fadeOutDuration: Duration(milliseconds: 500),
+                              imageUrl: currentUserPhoto,
+                              fit: BoxFit.cover,
+                              errorWidget: (context, error, stackTrace) =>
+                                  Image.asset(
+                                'assets/images/error_image.jpg',
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
                         ),
-                    colors: [Color(0xFF7E3E9C), Color(0xFF4A216D)],
-                    gradientDirection: GradientDirection.ttb,
-                    gradientType: GradientType.linear,
+                      ),
+                    ),
                   ),
-                ),
+                ],
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -13,10 +13,10 @@ import 'landing_page_a_model.dart';
 export 'landing_page_a_model.dart';
 
 class LandingPageAWidget extends StatefulWidget {
-  const LandingPageAWidget({Key? key}) : super(key: key);
+  const LandingPageAWidget({super.key});
 
   @override
-  _LandingPageAWidgetState createState() => _LandingPageAWidgetState();
+  State<LandingPageAWidget> createState() => _LandingPageAWidgetState();
 }
 
 class _LandingPageAWidgetState extends State<LandingPageAWidget> {
@@ -61,83 +61,85 @@ class _LandingPageAWidgetState extends State<LandingPageAWidget> {
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: Color(0xFFAE90C4),
         body: Stack(
           children: [
             Align(
-              alignment: AlignmentDirectional(0.03, 0.29),
-              child: Text(
-                'Welcome to \nUPatrol!',
-                textAlign: TextAlign.center,
-                style: FlutterFlowTheme.of(context).headlineLarge.override(
-                      fontFamily: 'Outfit',
-                      color: Color(0xFF5B3491),
-                      fontSize: 35.0,
-                    ),
-              ),
-            ),
-            Align(
               alignment: AlignmentDirectional(0.0, 0.0),
               child: Container(
-                width: MediaQuery.sizeOf(context).width * 1.0,
-                height: MediaQuery.sizeOf(context).height * 0.85,
+                height: MediaQuery.sizeOf(context).height * 1.0,
                 child: Stack(
                   alignment: AlignmentDirectional(0.0, 0.0),
                   children: [
-                    Align(
-                      alignment: AlignmentDirectional(0.0, -1.0),
-                      child: Container(
-                        width: MediaQuery.sizeOf(context).width * 1.0,
-                        height: MediaQuery.sizeOf(context).height * 0.567,
-                        decoration: BoxDecoration(
-                          color: Color(0xFF2D1A53),
-                        ),
-                      ),
-                    ),
-                    Align(
-                      alignment: AlignmentDirectional(0.0, 1.0),
-                      child: Container(
-                        width: MediaQuery.sizeOf(context).width * 1.0,
-                        height: MediaQuery.sizeOf(context).height * 0.473,
-                        decoration: BoxDecoration(
-                          color: Color(0xFFAE90C4),
-                        ),
-                      ),
-                    ),
-                    Align(
-                      alignment: AlignmentDirectional(1.01, -0.09),
-                      child: Container(
-                        width: 100.0,
-                        height: 100.0,
-                        decoration: BoxDecoration(
-                          color: Color(0xFF2D1A53),
-                        ),
-                      ),
-                    ),
-                    Align(
-                      alignment: AlignmentDirectional(0.0, -1.52),
-                      child: Container(
-                        width: MediaQuery.sizeOf(context).width * 1.0,
-                        height: MediaQuery.sizeOf(context).height * 0.5,
-                        decoration: BoxDecoration(
-                          color: Color(0xFFAE90C4),
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(0.0),
-                            bottomRight: Radius.circular(110.0),
-                            topLeft: Radius.circular(0.0),
-                            topRight: Radius.circular(0.0),
+                    Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Flexible(
+                          flex: 1,
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Container(
+                                width: MediaQuery.sizeOf(context).width * 1.0,
+                                height:
+                                    MediaQuery.sizeOf(context).height * 0.434,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context).accent2,
+                                ),
+                                child: Align(
+                                  alignment: AlignmentDirectional(0.0, 1.0),
+                                  child: Container(
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 1.0,
+                                    height:
+                                        MediaQuery.sizeOf(context).height * 0.9,
+                                    decoration: BoxDecoration(
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      borderRadius: BorderRadius.only(
+                                        bottomLeft: Radius.circular(0.0),
+                                        bottomRight: Radius.circular(113.0),
+                                        topLeft: Radius.circular(0.0),
+                                        topRight: Radius.circular(0.0),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                      ),
+                        Align(
+                          alignment: AlignmentDirectional(0.0, 1.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context).primary,
+                            ),
+                            child: Container(
+                              width: MediaQuery.sizeOf(context).width * 1.0,
+                              height: MediaQuery.sizeOf(context).height * 0.574,
+                              decoration: BoxDecoration(
+                                color: Color(0xFF2D1A53),
+                                borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(0.0),
+                                  bottomRight: Radius.circular(0.0),
+                                  topLeft: Radius.circular(120.0),
+                                  topRight: Radius.circular(0.0),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                     Align(
-                      alignment: AlignmentDirectional(-0.05, -0.94),
+                      alignment: AlignmentDirectional(-0.05, -0.75),
                       child: Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
                         child: Container(
-                          width: MediaQuery.sizeOf(context).width * 0.7,
-                          height: MediaQuery.sizeOf(context).height * 0.35,
+                          width: MediaQuery.sizeOf(context).width * 0.6,
+                          height: MediaQuery.sizeOf(context).height * 0.3,
                           decoration: BoxDecoration(
                             color: Color(0x00FFFFFF),
                           ),
@@ -156,72 +158,12 @@ class _LandingPageAWidgetState extends State<LandingPageAWidget> {
                         ),
                       ),
                     ),
-                    Align(
-                      alignment: AlignmentDirectional(-1.08, -0.11),
-                      child: Container(
-                        width: 127.0,
-                        height: 100.0,
-                        decoration: BoxDecoration(
-                          color: Color(0xFFAE90C4),
-                        ),
-                      ),
-                    ),
-                    Align(
-                      alignment: AlignmentDirectional(0.0, 1.37),
-                      child: Container(
-                        width: MediaQuery.sizeOf(context).width * 1.229,
-                        height: MediaQuery.sizeOf(context).height * 0.506,
-                        decoration: BoxDecoration(
-                          color: Color(0xFF2D1A53),
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(0.0),
-                            bottomRight: Radius.circular(0.0),
-                            topLeft: Radius.circular(113.0),
-                            topRight: Radius.circular(0.0),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Align(
-                      alignment: AlignmentDirectional(0.0, 0.28),
-                      child: AnimatedContainer(
-                        duration: Duration(milliseconds: 420),
-                        curve: Curves.elasticOut,
-                        width: MediaQuery.sizeOf(context).width * 1.0,
-                        height: MediaQuery.sizeOf(context).height * 0.2,
-                        decoration: BoxDecoration(
-                          color: Color(0x00FFFFFF),
-                        ),
-                        child: Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
-                          child: GradientText(
-                            'Welcome to \nUPatrol!',
-                            textAlign: TextAlign.center,
-                            style: FlutterFlowTheme.of(context)
-                                .headlineLarge
-                                .override(
-                                  fontFamily: 'Outfit',
-                                  fontSize: 50.0,
-                                  letterSpacing: 0.5,
-                                  fontWeight: FontWeight.bold,
-                                  lineHeight: 1.0,
-                                ),
-                            colors: [
-                              Color(0xFF9263B1),
-                              FlutterFlowTheme.of(context).tertiary
-                            ],
-                            gradientDirection: GradientDirection.ttb,
-                            gradientType: GradientType.linear,
-                          ),
-                        ),
-                      ),
-                    ),
                   ],
                 ),
               ),
             ),
             Align(
-              alignment: AlignmentDirectional(0.03, 0.52),
+              alignment: AlignmentDirectional(0.03, 0.4),
               child: Material(
                 color: Colors.transparent,
                 elevation: 10.0,
@@ -240,24 +182,25 @@ class _LandingPageAWidgetState extends State<LandingPageAWidget> {
                   ),
                   child: FFButtonWidget(
                     onPressed: () async {
-                      context.pushNamed('CreateReport-Anon');
+                      context.pushNamed('CreateReport-A');
                     },
                     text: 'Quick Report',
                     options: FFButtonOptions(
-                      width: MediaQuery.sizeOf(context).width * 0.5,
-                      height: MediaQuery.sizeOf(context).height * 0.06,
+                      width: MediaQuery.sizeOf(context).width * 0.4,
+                      height: MediaQuery.sizeOf(context).height * 0.05,
                       padding:
                           EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                       iconPadding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: Color(0x004A216D),
+                      color: Colors.transparent,
                       textStyle:
                           FlutterFlowTheme.of(context).labelLarge.override(
                                 fontFamily: 'Outfit',
                                 color: FlutterFlowTheme.of(context).info,
-                                fontSize: 18.0,
+                                fontSize: 14.0,
                                 fontWeight: FontWeight.bold,
                               ),
+                      elevation: 0.0,
                       borderSide: BorderSide(
                         color: Colors.transparent,
                         width: 0.0,
@@ -269,7 +212,7 @@ class _LandingPageAWidgetState extends State<LandingPageAWidget> {
               ),
             ),
             Align(
-              alignment: AlignmentDirectional(0.04, 0.72),
+              alignment: AlignmentDirectional(0.04, 0.54),
               child: Material(
                 color: Colors.transparent,
                 elevation: 10.0,
@@ -302,18 +245,18 @@ class _LandingPageAWidgetState extends State<LandingPageAWidget> {
                     },
                     text: 'Get Started',
                     options: FFButtonOptions(
-                      width: MediaQuery.sizeOf(context).width * 0.5,
-                      height: MediaQuery.sizeOf(context).height * 0.06,
+                      width: MediaQuery.sizeOf(context).width * 0.4,
+                      height: MediaQuery.sizeOf(context).height * 0.05,
                       padding:
                           EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                       iconPadding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: Color(0x005B3491),
+                      color: Colors.transparent,
                       textStyle:
                           FlutterFlowTheme.of(context).labelLarge.override(
                                 fontFamily: 'Outfit',
                                 color: FlutterFlowTheme.of(context).info,
-                                fontSize: 18.0,
+                                fontSize: 14.0,
                                 fontWeight: FontWeight.bold,
                               ),
                       borderSide: BorderSide(
@@ -322,6 +265,35 @@ class _LandingPageAWidgetState extends State<LandingPageAWidget> {
                       ),
                       borderRadius: BorderRadius.circular(30.0),
                     ),
+                  ),
+                ),
+              ),
+            ),
+            Align(
+              alignment: AlignmentDirectional(0.0, 0.15),
+              child: AnimatedContainer(
+                duration: Duration(milliseconds: 420),
+                curve: Curves.elasticOut,
+                width: MediaQuery.sizeOf(context).width * 1.0,
+                height: MediaQuery.sizeOf(context).height * 0.2,
+                decoration: BoxDecoration(
+                  color: Color(0x00FFFFFF),
+                ),
+                child: Align(
+                  alignment: AlignmentDirectional(0.0, 0.0),
+                  child: GradientText(
+                    'Welcome to \nUPatrol!',
+                    textAlign: TextAlign.center,
+                    style: FlutterFlowTheme.of(context).headlineLarge.override(
+                          fontFamily: 'Outfit',
+                          fontSize: 52.0,
+                          letterSpacing: 0.5,
+                          fontWeight: FontWeight.bold,
+                          lineHeight: 1.0,
+                        ),
+                    colors: [Color(0xFF9263B1), Color(0xFFBD7264)],
+                    gradientDirection: GradientDirection.rtl,
+                    gradientType: GradientType.linear,
                   ),
                 ),
               ),

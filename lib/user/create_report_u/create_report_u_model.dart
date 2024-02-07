@@ -27,10 +27,14 @@ class CreateReportUModel extends FlutterFlowModel<CreateReportUWidget> {
 
   String base64Image = '';
 
+  String address = 'Location Unknown';
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
+  // Stores action output result for [Custom Action - reverseGeocode] action in CreateReport-U widget.
+  String? address1;
   bool isDataUploading1 = false;
   FFUploadedFile uploadedLocalFile1 =
       FFUploadedFile(bytes: Uint8List.fromList([]));
@@ -47,9 +51,6 @@ class CreateReportUModel extends FlutterFlowModel<CreateReportUWidget> {
   FocusNode? textFieldFocusNode2;
   TextEditingController? textController2;
   String? Function(BuildContext, String?)? textController2Validator;
-  // State field(s) for LocationDropDown widget.
-  String? locationDropDownValue;
-  FormFieldController<String>? locationDropDownValueController;
   bool isDataUploading2 = false;
   FFUploadedFile uploadedLocalFile2 =
       FFUploadedFile(bytes: Uint8List.fromList([]));

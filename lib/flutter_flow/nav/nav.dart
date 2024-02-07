@@ -75,19 +75,20 @@ class AppStateNotifier extends ChangeNotifier {
   }
 }
 
-GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
+GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
+    GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) => appStateNotifier.loggedIn
-          ? ConnectingPageAWidget()
+          ? entryPage ?? HomePageUnifiedWidget()
           : LandingPageAWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
-              ? ConnectingPageAWidget()
+              ? entryPage ?? HomePageUnifiedWidget()
               : LandingPageAWidget(),
         ),
         FFRoute(
@@ -96,24 +97,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => LandingPageAWidget(),
         ),
         FFRoute(
-          name: 'HomePage-M',
-          path: '/homePageM',
-          builder: (context, params) => HomePageMWidget(),
-        ),
-        FFRoute(
-          name: 'HomePage-R',
-          path: '/homePageR',
-          builder: (context, params) => HomePageRWidget(),
-        ),
-        FFRoute(
           name: 'CreateReport-U',
           path: '/createReportU',
           builder: (context, params) => CreateReportUWidget(),
-        ),
-        FFRoute(
-          name: 'ConnectingPage-A',
-          path: '/connectingPageA',
-          builder: (context, params) => ConnectingPageAWidget(),
         ),
         FFRoute(
           name: 'Map-Unified',
@@ -124,21 +110,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'Profile-Unified',
           path: '/profileUnified',
           builder: (context, params) => ProfileUnifiedWidget(),
-        ),
-        FFRoute(
-          name: 'Profile-M',
-          path: '/profileM',
-          builder: (context, params) => ProfileMWidget(),
-        ),
-        FFRoute(
-          name: 'Profile-R',
-          path: '/profileR',
-          builder: (context, params) => ProfileRWidget(),
-        ),
-        FFRoute(
-          name: 'Homepage-Anon',
-          path: '/homepageAnon',
-          builder: (context, params) => HomepageAnonWidget(),
         ),
         FFRoute(
           name: 'EditProfile-U',
@@ -158,14 +129,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'CreateReport-Anon',
-          path: '/createReportAnon',
-          builder: (context, params) => CreateReportAnonWidget(),
-        ),
-        FFRoute(
           name: 'HomePage-Unified',
           path: '/homePageUnified',
           builder: (context, params) => HomePageUnifiedWidget(),
+        ),
+        FFRoute(
+          name: 'CreateReport-A',
+          path: '/createReportA',
+          builder: (context, params) => CreateReportAWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -348,7 +319,7 @@ class FFRoute {
               ? Container(
                   color: Colors.transparent,
                   child: Image.asset(
-                    'assets/images/18.jpg',
+                    'assets/images/Logo-Splash_(1).gif',
                     fit: BoxFit.cover,
                   ),
                 )

@@ -48,3 +48,16 @@ List<ReportsRecord> filterByDistance(
   }
   return placesList;
 }
+
+Color getCategoryColor(
+  List<String> categoryList,
+  List<Color> colorList,
+  String category,
+) {
+  int index = categoryList.indexOf(category);
+  if (index == -1) {
+    return Color.fromARGB(0, 128, 85, 85);
+  } else {
+    return colorList[index];
+  }
+}
