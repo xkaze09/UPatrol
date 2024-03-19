@@ -1,103 +1,69 @@
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'auth/firebase_auth/firebase_user_provider.dart';
-import 'auth/firebase_auth/auth_util.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:flutter/material.dart';
+import 'package:upatrol/firebase_options.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'backend/firebase/firebase_config.dart';
-import 'flutter_flow/flutter_flow_theme.dart';
-import 'flutter_flow/flutter_flow_util.dart';
-import 'flutter_flow/internationalization.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'flutter_flow/nav/nav.dart';
-import 'index.dart';
+FirebaseDatabase database = FirebaseDatabase.instance;
+CollectionReference userCollection =
+    FirebaseFirestore.instance.collection("users");
+
+Image pfp = Image.asset("temp.jpg");
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  usePathUrlStrategy();
-  await initFirebase();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
-  await FlutterFlowTheme.initialize();
+  var snappy = await userCollection.get();
+  debugPrint(snappy.toString());
 
-  runApp(MyApp());
+  runApp(const MainApp());
 }
 
-class MyApp extends StatefulWidget {
-  // This widget is the root of your application.
+class MainApp extends StatefulWidget {
+  const MainApp({
+    super.key,
+  });
+
   @override
-  State<MyApp> createState() => _MyAppState();
-
-  static _MyAppState of(BuildContext context) =>
-      context.findAncestorStateOfType<_MyAppState>()!;
+  State<MainApp> createState() => _MainAppState();
 }
 
-class _MyAppState extends State<MyApp> {
-  Locale? _locale;
-  ThemeMode _themeMode = FlutterFlowTheme.themeMode;
-
-  late Stream<BaseAuthUser> userStream;
-
-  late AppStateNotifier _appStateNotifier;
-  late GoRouter _router;
-
-  final authUserSub = authenticatedUserStream.listen((_) {});
-
+class _MainAppState extends State<MainApp> {
   @override
   void initState() {
     super.initState();
-
-    _appStateNotifier = AppStateNotifier.instance;
-    _router = createRouter(_appStateNotifier);
-    userStream = uPatrolFirebaseUserStream()
-      ..listen((user) => _appStateNotifier.update(user));
-    jwtTokenStream.listen((_) {});
-    Future.delayed(
-      Duration(milliseconds: 1000),
-      () => _appStateNotifier.stopShowingSplashImage(),
-    );
   }
-
-  @override
-  void dispose() {
-    authUserSub.cancel();
-
-    super.dispose();
-  }
-
-  void setLocale(String language) {
-    setState(() => _locale = createLocale(language));
-  }
-
-  void setThemeMode(ThemeMode mode) => setState(() {
-        _themeMode = mode;
-        FlutterFlowTheme.saveThemeMode(mode);
-      });
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'UPatrol',
-      localizationsDelegates: [
-        FFLocalizationsDelegate(),
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      locale: _locale,
-      supportedLocales: const [Locale('en', '')],
+    return MaterialApp(
+      title: "UPatrol",
       theme: ThemeData(
-        brightness: Brightness.light,
-        scrollbarTheme: ScrollbarThemeData(),
+        useMaterial3: true,
+
+        //Color
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.green,
+          brightness: Brightness.light,
+        ),
+
+        //Text
+        textTheme: const TextTheme(
+            displayLarge: TextStyle(
+          fontSize: 72,
+          fontWeight: FontWeight.bold,
+        )),
+
+        primaryColor: Colors.green,
       ),
-      darkTheme: ThemeData(
-        brightness: Brightness.dark,
-        scrollbarTheme: ScrollbarThemeData(),
+      home: Scaffold(
+        body: Center(
+          child: Image.asset("assets/logo.png"),
+        ),
       ),
-      themeMode: _themeMode,
-      routerConfig: _router,
     );
   }
 }
